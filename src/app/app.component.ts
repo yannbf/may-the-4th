@@ -12,26 +12,26 @@ import { Subject } from 'rxjs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'HomePage';
-  activePage = new Subject();
+  rootPage: any = 'MenuPage';
+  // activePage = new Subject();
 
-  pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
+  // pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, public global: AppState) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
-      { title: 'List Page', component: 'ListPage', active: false, icon: 'alarm' },
-    ];
+    // this.pages = [
+    //   { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
+    //   { title: 'List Page', component: 'ListPage', active: false, icon: 'alarm' },
+    // ];
 
-    this.activePage.subscribe((selectedPage: any) => {
-      this.pages.map(page => {
-        page.active = page.title === selectedPage.title;
-      });
-    });
+    // this.activePage.subscribe((selectedPage: any) => {
+    //   this.pages.map(page => {
+    //     page.active = page.title === selectedPage.title;
+    //   });
+    // });
 
   }
 
@@ -45,10 +45,10 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-    this.activePage.next(page);
-  }
+  // openPage(page) {
+  //   // Reset the content nav to have just this page
+  //   // we wouldn't want the back button to show in this scenario
+  //   this.nav.setRoot(page.component);
+  //   this.activePage.next(page);
+  // }
 }
