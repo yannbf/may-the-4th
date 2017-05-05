@@ -1,3 +1,4 @@
+import { AudioService } from '../../providers/audio-service/audio-service';
 import { AppState } from '../../app/app.global';
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
@@ -9,12 +10,13 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public global: AppState) {
-
+  constructor(public navCtrl: NavController, public global: AppState,
+    public audioCtrl: AudioService) {
   }
 
   changeTheme(side){
     this.global.set('side', side);
+    this.audioCtrl.play('turnLightSaberOn');
   }
 
 }

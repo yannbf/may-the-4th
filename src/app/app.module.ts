@@ -7,6 +7,9 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Shake } from '@ionic-native/shake';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { AudioService } from '../providers/audio-service/audio-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AppState,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Shake,
+    NativeAudio,
+    AudioService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}
