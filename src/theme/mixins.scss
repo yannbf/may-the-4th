@@ -1,0 +1,75 @@
+.hexagon {
+  position: relative;
+  width: 115px;
+  height: 66.40px;
+  margin-top: 40px !important;
+  margin: 0 auto 40px auto;
+  background-image: url(https://drupal-multisite-s3.s3-us-west-2.amazonaws.com/files/darth.vader_.jpg);
+  background-size: auto 121.2436px;
+  background-position: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  border-left: solid 5px $darkside-red;
+  border-right: solid 5px $darkside-red;
+}
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 81.32px;
+  height: 81.32px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 11.84px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+/*counter transform the bg image on the caps*/
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 105.0000px;
+  height: 60.621778264910716px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-30.3109px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-30.3109px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-30.3109px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -40.6586px;
+  border-top: solid 7.0711px $darkside-red;
+  border-right: solid 7.0711px $darkside-red;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -40.6586px;
+  border-bottom: solid 7.0711px $darkside-red;
+  border-left: solid 7.0711px $darkside-red;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 2.8868px;
+  left: 0;
+  width: 105.0000px;
+  height: 60.6218px;
+  z-index: 2;
+  background: inherit;
+}

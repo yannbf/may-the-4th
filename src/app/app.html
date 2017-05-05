@@ -1,10 +1,20 @@
-<div class="{{global.state['theme']}}">
+<div class="{{'theme-'+global.state['side']}}">
 
   <ion-menu [content]="content" type="reveal">
     <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
+      <div class="sw-avatar">
+        <div #darkSide *ngIf="global.state['side'] === 'dark'">
+          <div class="hexagon">
+            <div class="hexTop"></div>
+            <div class="hexBottom"></div>
+          </div>
+        </div>
+        <div #lightSide *ngIf="global.state['side'] === 'light'">
+          <ion-avatar>
+            <img class="user-avatar round" src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/5a/5a1eb2a86a1f6a318f6e343669d6dca1cddb572b_full.jpg"/>
+          </ion-avatar>
+        </div>
+      </div>
     </ion-header>
 
     <ion-content>

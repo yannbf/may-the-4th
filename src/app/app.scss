@@ -16,7 +16,17 @@
 // automatically applied to the <body> element in the app.
 @import '../theme/darkside.theme';
 @import '../theme/lightside.theme';
+@import '../theme/mixins';
 
 button.item.item-block.active-menu-item {
     background: #ccc;
+}
+
+ion-avatar img {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 105px;
 }

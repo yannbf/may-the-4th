@@ -13,7 +13,7 @@ export class HomePage {
   }
 
   changeTheme(){
-    this.global.set('theme', 'theme-darkside');
+    this.global.set('side', 'dark');
   }
 
 }
