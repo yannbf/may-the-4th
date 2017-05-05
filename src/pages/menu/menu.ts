@@ -1,3 +1,4 @@
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppState } from '../../app/app.global';
 import { IonicPage, Menu, NavController, Nav, Events } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
@@ -24,7 +25,7 @@ export class MenuPage {
     ];
 
   public menuRoot = 'HomePage';
-  constructor(public nav: NavController, public global: AppState) {
+  constructor(public nav: NavController, public global: AppState, public splashScreen: SplashScreen) {
     this.initialize();
   }
 
@@ -39,6 +40,8 @@ export class MenuPage {
         page.active = page.title === selectedPage.title;
       });
     });
+
+    this.splashScreen.hide();
   }
 
   openPage(page) {

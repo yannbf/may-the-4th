@@ -24,9 +24,11 @@ button.item.item-block.active-menu-item {
 
 ion-avatar img {
     display: block;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
     margin: 0 auto;
     border-radius: 50%;
     width: 105px;
+    background: $lightside-blue;
+    padding: 5px;
 }
