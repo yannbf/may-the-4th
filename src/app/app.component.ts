@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Shake } from '@ionic-native/shake';
 
 import { Subject } from 'rxjs';
 
@@ -14,8 +15,11 @@ export class MyApp {
 
   rootPage: any = 'MenuPage';
 
+
+
   constructor(public platform: Platform, public statusBar: StatusBar,
-    public splashScreen: SplashScreen, public global: AppState) {
+    public splashScreen: SplashScreen, public global: AppState,
+    private shake: Shake) {
     this.initializeApp();
   }
 
@@ -26,6 +30,17 @@ export class MyApp {
       this.global.set('side', 'light');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.watchForSwings();
     });
+  }
+
+  watchForSwings() {
+    const watch = this.shake.startWatch(60).subscribe(() => {
+      this.swingLightSaber();
+    });
+  }
+
+  swingLightSaber() {
+    // Play audio here
   }
 }
