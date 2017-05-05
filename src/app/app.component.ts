@@ -13,26 +13,10 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = 'MenuPage';
-  // activePage = new Subject();
-
-  // pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, public global: AppState) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    // this.pages = [
-    //   { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
-    //   { title: 'List Page', component: 'ListPage', active: false, icon: 'alarm' },
-    // ];
-
-    // this.activePage.subscribe((selectedPage: any) => {
-    //   this.pages.map(page => {
-    //     page.active = page.title === selectedPage.title;
-    //   });
-    // });
-
   }
 
   initializeApp() {
@@ -44,11 +28,4 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-
-  // openPage(page) {
-  //   // Reset the content nav to have just this page
-  //   // we wouldn't want the back button to show in this scenario
-  //   this.nav.setRoot(page.component);
-  //   this.activePage.next(page);
-  // }
 }
