@@ -19,7 +19,8 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar,
+    public splashScreen: SplashScreen, public global: AppState) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -40,6 +41,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.global.set('theme', '');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
