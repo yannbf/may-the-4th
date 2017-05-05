@@ -39,7 +39,6 @@ export class MenuPage {
         page.active = page.title === selectedPage.title;
       });
     });
-    console.log(this.pages);
   }
 
   openPage(page) {

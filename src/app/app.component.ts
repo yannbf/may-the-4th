@@ -32,7 +32,8 @@ export class MyApp {
   }
 
   watchForSwings() {
-    const watch = this.shake.startWatch(60).subscribe(() => {
+    const watch = this.shake.startWatch(40).subscribe(() => {
+      console.log('swing');
       this.audioCtrl.swingLightSaber();
     });
   }
