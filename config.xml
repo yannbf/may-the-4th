@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <engine name="android" spec="~5.2.2" />
     <plugin name="cordova-plugin-nativeaudio" spec="~3.0.9" />
+    <plugin name="cordova-plugin-shake" spec="~0.5.4" />
 </widget>
