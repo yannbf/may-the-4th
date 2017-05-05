@@ -4,8 +4,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -14,7 +12,7 @@ import { Subject } from 'rxjs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'HomePage';
   activePage = new Subject();
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
@@ -25,8 +23,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage, active: true, icon: 'home' },
-      { title: 'List Page', component: ListPage, active: false, icon: 'alarm' },
+      { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
+      { title: 'List Page', component: 'ListPage', active: false, icon: 'alarm' },
     ];
 
     this.activePage.subscribe((selectedPage: any) => {
