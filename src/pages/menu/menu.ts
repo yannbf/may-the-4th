@@ -1,6 +1,6 @@
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppState } from '../../app/app.global';
-import { IonicPage, Menu, NavController, Nav, Events } from 'ionic-angular';
+import { IonicPage, Menu, NavController, Nav } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs';
