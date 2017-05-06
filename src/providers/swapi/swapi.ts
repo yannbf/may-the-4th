@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { CacheService } from "ionic-cache/ionic-cache";
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SwapiProvider {
  private baseUrl = "http://swapi.co/api/";
 
-  constructor(public http: Http) { }
+  constructor(public http: Http, public cache: CacheService) { }
 
   get(endpoint: string, params?: any, cacheKey?: string, options?: RequestOptions) {
     options = new RequestOptions();
@@ -23,8 +24,8 @@ export class SwapiProvider {
     // Set the search field if we have params and don't already have
     // a search field set in options.
     options.search = !options.search && p || options.search;
-    return this.http.get(endpoint, options).map(res => res.json());
-    // return this.cache.loadFromObservable(cacheKey, request);
+    let request    = this.http.get(endpoint, options).map(res => res.json());
+    return this.cache.loadFromObservable(cacheKey, request);
   }
 
   getPerson(id): any {
@@ -33,7 +34,7 @@ export class SwapiProvider {
     }
 
     let endpoint = 'people';
-    // let cacheKey = endpoint + JSON.stringify(params);
-    return this.get(this.baseUrl + endpoint, params);
+    let cacheKey = endpoint + JSON.stringify(params);
+    return this.get(this.baseUrl + endpoint, params, cacheKey);
   }
 }

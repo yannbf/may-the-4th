@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { CacheService } from "ionic-cache/ionic-cache";
 
 import { MyApp } from './app.component';
 
@@ -35,6 +36,7 @@ import { SwapiProvider } from '../providers/swapi/swapi';
     AudioService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SwapiProvider,
+    CacheService,
   ]
 })
 export class AppModule {}
