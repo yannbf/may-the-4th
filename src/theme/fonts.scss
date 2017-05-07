@@ -1,0 +1,24 @@
+/*
+    App Wide Fonts and various weights
+*/
+
+@font-face {
+    font-family: "District Pro";
+    src: url("../assets/fonts/DistrictPro.otf") format('opentype');
+}
+
+.secondary-font {
+    font-family: "District Pro";
+    font-weight: bold;
+}
+
+.bold {font-weight:bold;}
+.text-right {text-align: right;}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+.uppercase {text-transform:uppercase;}
+.no-margin {margin:0;}
+.text-ellipsis {
+	text-overflow: ellipsis;
+}
+.no-underline {text-decoration: none;}

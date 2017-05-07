@@ -1,3 +1,26 @@
 page-menu {
+    #custom-overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000000;
+        width: 100%;
+        background-color: #000;
+    }
 
+    button.item.item-block.active-menu-item {
+        background: #ccc;
+    }
+
+    ion-avatar img {
+        display: block;
+        margin-top: 12px !important;
+        margin-bottom: 12px !important;
+        margin: 0 auto;
+        border-radius: 50%;
+        width: 120px;
+        padding: 5px;
+    }
 }

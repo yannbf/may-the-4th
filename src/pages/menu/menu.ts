@@ -1,3 +1,4 @@
+import { AudioService } from '../../providers/audio-service/audio-service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppState } from '../../app/app.global';
 import { IonicPage, Menu, NavController, Nav } from 'ionic-angular';
@@ -18,6 +19,9 @@ export class MenuPage {
   @ViewChild(Menu) menu: Menu;
   rootPage: any = 'HomePage';
   activePage = new Subject();
+  splash = false;
+  fade   = false;
+  side   = 'light';
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }> = [
       { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
@@ -25,14 +29,14 @@ export class MenuPage {
     ];
 
   public menuRoot = 'HomePage';
-  constructor(public nav: NavController, public global: AppState, public splashScreen: SplashScreen) {
+  constructor(public nav: NavController, public global: AppState,
+    public splashScreen: SplashScreen, public audioCtrl: AudioService) {
     this.initialize();
   }
 
   initialize() {
     this.pages = [
       { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
-      { title: 'List Page', component: 'ListPage', active: false, icon: 'alarm' },
     ];
 
     this.activePage.subscribe((selectedPage: any) => {
@@ -41,7 +45,9 @@ export class MenuPage {
       });
     });
 
-    this.splashScreen.hide();
+    setTimeout(() => this.fade = true, 7000);
+    setTimeout(() => this.splash = false, 7800);
+    // this.splashScreen.hide();
   }
 
   openPage(page) {
@@ -49,5 +55,15 @@ export class MenuPage {
     // we wouldn't want the back button to show in this scenario
     this.content.setRoot(page.component);
     this.activePage.next(page);
+  }
+
+  switchSides(){
+    if(this.side === 'dark'){
+      this.side = 'light';
+    } else {
+      this.side = 'dark';
+    }
+    this.global.set('side', this.side);
+    this.audioCtrl.play('turnLightSaberOn');
   }
 }

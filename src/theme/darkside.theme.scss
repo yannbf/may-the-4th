@@ -12,7 +12,7 @@
   .toolbar-background,
   .toggle-checked {
     transition: all 1.1s ease;
-    background-color: #212121 !important;
+    background-color: #212121;
   }
   .item-note,
   .swiper-pagination-bullet {
@@ -56,6 +56,14 @@
   .range-bar-active {
     background-color: white !important;
     color: black !important;
+  }
+
+  ion-card {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  ion-avatar img {
+      background: $darkside-red;
   }
 }
 

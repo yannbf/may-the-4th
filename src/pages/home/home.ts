@@ -11,21 +11,30 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 export class HomePage {
 
+  films = [];
+
   constructor(public navCtrl: NavController, public global: AppState,
     public audioCtrl: AudioService, public swapi: SwapiProvider) {
       this.loadData();
   }
 
   loadData() {
-    // Test method
-    this.swapi.getPerson(1).subscribe(data => {
-      console.log(data);
+    this.swapi.getFilms().subscribe(data => {
+      this.films = data.results;
     });
   }
 
   changeTheme(side){
     this.global.set('side', side);
     this.audioCtrl.play('turnLightSaberOn');
+  }
+
+  viewFilmDetail(film) {
+    this.navCtrl.push('FilmDetailPage', film);
+  }
+
+  getCover(id){
+    return `url(assets/img/scenes/episode_${id}.jpg)`;
   }
 
 }

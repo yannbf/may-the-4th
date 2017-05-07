@@ -1,3 +1,39 @@
 page-home {
+    .movie {
+        height: 30vh;
+        background: #333;
+        color: white;
+        position: relative;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 50% !important;
 
+        .title, .episode, .date {
+            position : absolute;
+            z-index: 3;
+        }
+
+        .title {
+            left: 3%;
+            bottom : 5%;
+        }
+
+        .episode {
+            top : 0;
+            right : 3%;
+            color: #ffe405;
+            font-size: 10rem;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+    }
+
+    .movie::after {
+        content: '';
+        display: block;
+        position: relative;
+        // background-image: linear-gradient(to bottom, transparent 50%, black 100%);
+        background: transparentize(black, 0.9);
+        width: 100%;
+        height: 30vh;
+    }
 }

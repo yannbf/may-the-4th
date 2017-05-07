@@ -1,0 +1,65 @@
+page-film-detail {
+    .toolbar button.bar-button span, .toolbar-title {
+        color: white;
+    }
+
+    .scroll-content {
+        padding: 0 !important;
+    }
+
+    .cover {
+        position: relative;
+        height: 70vh;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 50% !important;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    .cover::after {
+        content: '';
+        display: block;
+        position: relative;
+        background-image: linear-gradient(to bottom, transparent 50%, black 100%);
+        width: 100%;
+        height: 70vh;
+    }
+
+    .imdb-info {
+        color: black;
+        font-weight: bold;
+        background : #e9ce38;
+        position   : absolute;
+        right      : 5%;
+        top        : 55%;
+        height     : 70px;
+        width      : 70px;
+
+        .button-inner {
+            flex-flow: column;
+        }
+
+        span:first-child {
+            height: 18px;
+        }
+    }
+
+    .cover .title {
+        position: absolute;
+        bottom: 10%;
+        padding-left: 1rem;
+        color: white;
+        z-index: 2;
+
+        .main-title {
+            display: block;
+            font-size: 3rem;
+            margin-bottom: .8rem;
+        }
+
+        .subtitle {
+            display: block;
+            font-size: 1.7rem;
+        }
+    }
+}

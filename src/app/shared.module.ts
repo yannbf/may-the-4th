@@ -1,15 +1,14 @@
+import { PipesModule } from '../pipes/pipes.module';
 import { NgModule } from '@angular/core';
-export const ELEMENTS = [
-]
 
 @NgModule({
     declarations: [
-        ELEMENTS
     ],
     imports: [
+        PipesModule
     ],
     exports: [
-        ELEMENTS
+        PipesModule,
     ]
 })
 

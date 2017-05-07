@@ -18,12 +18,11 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
-    <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
     <preference name="loadUrlTimeoutValue" value="70000" />
+    <preference name="SplashScreenDelay" value="0"/>
+    <preference name="ShowSplashScreen" value="false"/>
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -88,4 +87,5 @@
     <engine name="android" spec="~5.2.2" />
     <plugin name="cordova-plugin-nativeaudio" spec="~3.0.9" />
     <plugin name="cordova-plugin-shake" spec="~0.5.4" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
 </widget>

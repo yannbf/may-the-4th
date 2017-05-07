@@ -17,18 +17,69 @@
 @import '../theme/darkside.theme';
 @import '../theme/lightside.theme';
 @import '../theme/mixins';
+@import "../theme/fonts";
 
-button.item.item-block.active-menu-item {
-    background: #ccc;
+ion-card {
+	.card-header {
+    	background: rgba(255,255,255,.05) !important;
+	}
+    ion-avatar img {
+    	// max-width: 160px !important;
+		padding: 2px !important;
+	}
 }
 
-ion-avatar img {
+.fade {
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; display: none;}
+}
+
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+p, h1, h2, span {
+	font-family: "Droid Sans", arial, verdana, sans-serif;
+}
+
+#titles
+{
+	background-color: #000;
+	position: absolute;
+	width: 18em;
+	height: 70em;
+	bottom: 0;
+	left: 50%;
+	margin-left: -9em;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+}
+
+#titles img {
+    width: 100vw;
     display: block;
-    margin-top: 20px !important;
-    margin-bottom: 20px !important;
     margin: 0 auto;
-    border-radius: 50%;
-    width: 105px;
-    background: $lightside-blue;
-    padding: 5px;
+}
+
+#titlecontent
+{
+	position: absolute;
+	top: 100%;
+	-webkit-animation: scroll 20s linear 1s infinite;
+	animation: scroll 20s linear 1s infinite;
+}
+
+/* animation */
+@-webkit-keyframes scroll {
+	0% { top: 100%; }
+	100% { top: -170%; }
+}
+
+@keyframes scroll {
+	0% { top: 100%; }
+	100% { top: -170%; }
 }

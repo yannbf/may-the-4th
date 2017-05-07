@@ -1,0 +1,58 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <div class="header">
+    <div class="cover" [ngStyle]="{'background': 'url('+image+')' }">
+      <div class="title">
+        <span class="main-title secondary-font">{{ movieTitle }}</span>
+        <span class="subtitle secondary-font">{{ film.title }}</span>
+      </div>
+    </div>
+    <button ion-fab class="imdb-info" (click)="openIMDB()">
+      <span>IMDb</span>
+      <span>{{ omdbData?.imdbRating }}</span>
+    </button>
+  </div>
+  <div class="details" padding>
+    <!--{{ film.release_date }}
+    {{ film.episode_id }}
+    {{ film.opening_crawl }}-->
+    <div *ngIf="omdbData">
+      <h3>Length</h3>
+      <p>{{ omdbData.Runtime }}</p>
+      <h3>Plot</h3>
+      <p>{{ omdbData.Plot }}</p>
+      <h3>Awards</h3>
+      <p>{{ omdbData.Awards }}</p>
+    </div>
+  </div>
+  <div class="characters" *ngIf="characters.length > 0">
+    <h3 padding>Characters in movie:</h3>
+    <ion-slides padding spaceBetween="2" autoplay="3000" slidesPerView="2" style="height: 60vh">
+      <ion-slide *ngFor="let character of characters" style="border-radius: 5px">
+        <ion-card *ngIf="character">
+          <ion-card-header>
+            <h2 class="word-wrap secondary-font">{{ character.name }}</h2>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-avatar>
+              <img class="user-avatar round"
+                [src]="character?.photo"/>
+            </ion-avatar>
+            <p class="secondary-font">Weight: {{ character.mass }} Kg</p>
+            <p class="secondary-font">Gender: {{ character.gender }}</p>
+            <p class="secondary-font">Birth year: {{ character.birth_year }}</p>
+            <!--<p>{{ character.eye_color }}</p>
+            <p>{{ character.skin_color }}</p>
+            <p>{{ character.hair_color }}</p>
+            <p>{{ character.species}}</p>-->
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

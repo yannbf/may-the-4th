@@ -7,8 +7,24 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Which side are you on?</h3>
+<ion-content>
+  <!--<h3>Which side are you on?</h3>
   <button ion-button color="dark" (click)="changeTheme('dark')">Dark side</button>
-  <button ion-button (click)="changeTheme('light')">Light Side</button>
+  <button ion-button (click)="changeTheme('light')">Light Side</button>-->
+  <div class="moviesList">
+    <div class="movie" *ngFor="let film of films"
+         (click)="viewFilmDetail(film)"
+         [ngStyle]="{'background': getCover(film.episode_id) }">
+      <div class="title">
+        <h1>{{ film.title }}</h1>
+      </div>
+      <!--<div class="date">
+        <h3>{{ film.release_date }}</h3>
+      </div>-->
+      <div class="episode">
+        <span>{{ film.episode_id | romanize }}</span>
+      </div>
+      <!--{{ film.opening_crawl }}-->
+    </div>
+  </div>
 </ion-content>

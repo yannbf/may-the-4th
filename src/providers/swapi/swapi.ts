@@ -1,40 +1,62 @@
+import { GoogleImagesProvider } from '../google-images/google-images';
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http } from '@angular/http';
 import { CacheService } from "ionic-cache/ionic-cache";
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SwapiProvider {
  private baseUrl = "http://swapi.co/api/";
 
-  constructor(public http: Http, public cache: CacheService) { }
+  constructor(public http: Http, public cache: CacheService, private gImages: GoogleImagesProvider) { }
 
-  get(endpoint: string, params?: any, cacheKey?: string, options?: RequestOptions) {
-    options = new RequestOptions();
+  get(endpoint: string) {
+    let cacheKey = endpoint;
+    let request  = this.http.get(endpoint).map(res => res.json());
+    return this.cache.loadFromObservable(cacheKey, request);
+  }
 
-    // Support easy query params for GET requests
-    let p = new URLSearchParams();
-    if (params) {
-      for(let k in params) {
-        p.set(k, params[k]);
-      }
+  getWithImage(endpoint): Observable<any> {
+    let cacheKey = endpoint;
+    let request  = this.http.get(endpoint)
+      .map((res: any) => res.json())
+      .flatMap((item: any) => {
+        let query = 'Star wars ' + (item.name || item.title);
+        return this.gImages.searchImage(query)
+          .map((res: any) => {
+            let image = res.items[0].link;
+            console.log(query, image);
+            item.image = image;
+            return item;
+          });
+      });
 
-    }
-
-    // Set the search field if we have params and don't already have
-    // a search field set in options.
-    options.search = !options.search && p || options.search;
-    let request    = this.http.get(endpoint, options).map(res => res.json());
     return this.cache.loadFromObservable(cacheKey, request);
   }
 
   getPerson(id): any {
-    let params = {
-      id : id,
-    }
+    let endpoint = 'people/' + id;
+    return this.get(this.baseUrl + endpoint);
+  }
 
-    let endpoint = 'people';
-    let cacheKey = endpoint + JSON.stringify(params);
-    return this.get(this.baseUrl + endpoint, params, cacheKey);
+  getSpecie(id): any {
+    let endpoint = 'species/' + id;
+    return this.get(this.baseUrl + endpoint);
+  }
+
+  getVehicle(id): any {
+    let endpoint = 'vehicle/' + id;
+    return this.get(this.baseUrl + endpoint);
+  }
+
+  getFilm(id): any {
+    let endpoint = 'films/' + id;
+    return this.get(this.baseUrl + endpoint);
+  }
+
+  getFilms(): any {
+    let endpoint = 'films';
+    return this.get(this.baseUrl + endpoint);
   }
 }
