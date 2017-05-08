@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SwapiProvider {
- private baseUrl = "http://swapi.co/api/";
+ private baseUrl = "https://swapi.co/api/";
 
   constructor(public http: Http, public cache: CacheService, private gImages: GoogleImagesProvider) { }
 

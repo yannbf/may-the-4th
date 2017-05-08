@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class OmdbProvider {
 
-  private baseUrl = 'http://www.omdbapi.com/';
+  private baseUrl = 'https://www.omdbapi.com/';
   private queryParams = {
     t : '',
     r : 'json'

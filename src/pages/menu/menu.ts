@@ -19,7 +19,7 @@ export class MenuPage {
   @ViewChild(Menu) menu: Menu;
   rootPage: any = 'HomePage';
   activePage = new Subject();
-  splash = false;
+  splash = true;
   fade   = false;
   side   = 'light';
 

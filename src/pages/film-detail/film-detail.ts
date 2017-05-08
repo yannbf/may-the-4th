@@ -64,7 +64,7 @@ export class FilmDetailPage {
   }
 
   loadOmdbData() {
-    if(this.film.episode_id != 7){
+    if(this.film.episode_id != 7 && this.film.episode_id != 8 ){
       let query = 'Star wars: ' + this.movieTitle;
       let loading = this.loadingCtrl.create({
         content: 'Loading...'
@@ -75,7 +75,9 @@ export class FilmDetailPage {
         loading.dismiss();
       });
     } else {
-      this.exceptionalInfo();
+      if(this.film.episode_id === 7){
+        this.exceptionalInfo();
+      }
     }
   }
 
@@ -104,8 +106,6 @@ export class FilmDetailPage {
   getAvatar(character) {
     let index = character.url.split('/')[5];
     index = parseInt(index) - 1;
-    console.log(AVATARS[index]);
-
     return AVATARS[index] ? AVATARS[index].photo : '';
   }
 
@@ -121,11 +121,11 @@ export class FilmDetailPage {
   openTrailer () {
     let id = this.trailers[this.film.episode_id-1].id;
 
-    if(this.platform.is('cordova')){
-      this.youtube.openVideo(id);
-    } else {
+    // if(this.platform.is('cordova')){
+      // this.youtube.openVideo(id);
+    // } else {
       let url = `https://www.youtube.com/watch?v=${id}`;
       this.openOnBrowser(url);
-    }
+    // }
   }
 }

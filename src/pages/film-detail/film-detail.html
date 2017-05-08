@@ -17,7 +17,7 @@
       <span>{{ omdbData?.imdbRating }}</span>
     </button>
   </div>
-  <div class="countdown" style="height: 60vh">
+  <div *ngIf="film.episode_id === 8" class="countdown" style="height: 60vh">
     <ion-icon name="sw-death-star" item-left></ion-icon>
     <timer></timer>
   </div>
