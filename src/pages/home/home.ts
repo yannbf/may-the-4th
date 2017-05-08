@@ -12,6 +12,10 @@ import { NavController, IonicPage } from 'ionic-angular';
 export class HomePage {
 
   films = [];
+  last = {
+    episode_id: 8,
+    title: 'The last Jedi'
+  }
 
   constructor(public navCtrl: NavController, public global: AppState,
     public audioCtrl: AudioService, public swapi: SwapiProvider) {
@@ -21,6 +25,7 @@ export class HomePage {
   loadData() {
     this.swapi.getFilms().subscribe(data => {
       this.films = data.results;
+      this.films.push(this.last);
     });
   }
 

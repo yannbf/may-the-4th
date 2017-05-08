@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
     declarations: [
     ],
     imports: [
-        PipesModule
+        PipesModule,
     ],
     exports: [
         PipesModule,

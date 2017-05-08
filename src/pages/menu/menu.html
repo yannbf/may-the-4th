@@ -34,7 +34,8 @@
         </button>
         <button ion-item
                 (click)="switchSides()">
-          <ion-icon name="switch" item-left></ion-icon>
+          <ion-icon name="sw-darth-vader" *ngIf="global.state['side'] === 'dark'" item-left></ion-icon>
+          <ion-icon name="sw-c3p0" *ngIf="global.state['side'] === 'light'" item-left></ion-icon>
           Switch sides
         </button>
       </ion-list>

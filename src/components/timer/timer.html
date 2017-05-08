@@ -1,0 +1,32 @@
+<div id="timer" style="margin-bottom: 5rem">
+  <ion-grid>
+    <ion-row class="numbers">
+      <ion-col col-3>
+        {{ format(remainingDays) }}
+      </ion-col>
+      <ion-col col-3>
+        {{ format(remainingHours) }}
+      </ion-col>
+      <ion-col col-3>
+        {{ format(remainingMinutes) }}
+      </ion-col>
+      <ion-col col-3>
+        {{ format(remainingSeconds) }}
+      </ion-col>
+    </ion-row>
+    <ion-row class="titles">
+      <ion-col col-3>
+        <small>DAYS</small>
+      </ion-col>
+      <ion-col col-3>
+        <small>HOURS</small>
+      </ion-col>
+      <ion-col col-3>
+        <small>MINUTES</small>
+      </ion-col>
+      <ion-col col-3>
+        <small>SECONDS</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

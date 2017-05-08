@@ -1,5 +1,7 @@
 page-menu {
     #custom-overlay {
+        background: url('../assets/img/galaxy.jpg');
+        background-size: cover;
         position: fixed;
         top: 0;
         right: 0;
@@ -7,7 +9,7 @@ page-menu {
         left: 0;
         z-index: 1000000;
         width: 100%;
-        background-color: #000;
+        background-color:transparent;
     }
 
     button.item.item-block.active-menu-item {

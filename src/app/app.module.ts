@@ -16,12 +16,11 @@ import { SwapiProvider } from '../providers/swapi/swapi';
 import { OmdbProvider } from '../providers/omdb/omdb';
 import { GoogleImagesProvider } from '../providers/google-images/google-images';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { CountdownTimerComponent } from '../components/countdown-timer/countdown-timer';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 @NgModule({
   declarations: [
     MyApp,
-    CountdownTimerComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +44,7 @@ import { CountdownTimerComponent } from '../components/countdown-timer/countdown
     OmdbProvider,
     GoogleImagesProvider,
     InAppBrowser,
+    YoutubeVideoPlayer,
   ]
 })
 export class AppModule {}

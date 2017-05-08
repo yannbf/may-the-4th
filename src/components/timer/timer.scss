@@ -1,0 +1,16 @@
+#timer {
+    color: white;
+    ion-grid {
+        text-align: center;
+    }
+    .numbers .col {
+        font-size: x-large;
+        font-family: "District Pro";
+        font-weight: bold;
+    }
+    .titles .col {
+        font-family: "District Pro";
+        font-weight: normal;
+        padding: 0;
+    }
+}

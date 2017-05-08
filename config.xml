@@ -21,8 +21,8 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="loadUrlTimeoutValue" value="70000" />
-    <preference name="SplashScreenDelay" value="0"/>
-    <preference name="ShowSplashScreen" value="false"/>
+    <preference name="SplashScreenDelay" value="0" />
+    <preference name="ShowSplashScreen" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -88,4 +88,5 @@
     <plugin name="cordova-plugin-nativeaudio" spec="~3.0.9" />
     <plugin name="cordova-plugin-shake" spec="~0.5.4" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
+    <plugin name="com.bunkerpalace.cordova.YoutubeVideoPlayer" spec="https://github.com/Glitchbone/CordovaYoutubeVideoPlayer.git" />
 </widget>

@@ -14,6 +14,9 @@ page-home {
         }
 
         .title {
+            h1 {
+                font-weight: normal !important;
+            }
             left: 3%;
             bottom : 5%;
         }
@@ -22,8 +25,11 @@ page-home {
             top : 0;
             right : 3%;
             color: #ffe405;
-            font-size: 10rem;
+            font-size: 9rem;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            span {
+                font-family: serif !important;
+            }
         }
     }
 
@@ -31,8 +37,8 @@ page-home {
         content: '';
         display: block;
         position: relative;
-        // background-image: linear-gradient(to bottom, transparent 50%, black 100%);
-        background: transparentize(black, 0.9);
+        background-image: linear-gradient(to bottom, transparent 20%, black 100%);
+        // background: transparentize(black, 0.9);
         width: 100%;
         height: 30vh;
     }

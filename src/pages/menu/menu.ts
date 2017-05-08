@@ -23,10 +23,7 @@ export class MenuPage {
   fade   = false;
   side   = 'light';
 
-  pages: Array<{ title: string, component: any, active: boolean, icon: string }> = [
-      { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
-      { title: 'List Page', component: 'ListPage', active: false, icon: 'alarm' },
-    ];
+  pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
   public menuRoot = 'HomePage';
   constructor(public nav: NavController, public global: AppState,
@@ -36,7 +33,7 @@ export class MenuPage {
 
   initialize() {
     this.pages = [
-      { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
+      { title: 'Home', component: 'HomePage', active: true, icon: 'sw-logo' },
     ];
 
     this.activePage.subscribe((selectedPage: any) => {
