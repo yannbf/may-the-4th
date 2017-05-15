@@ -5,6 +5,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Shake } from '@ionic-native/shake';
+import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,6 +19,19 @@ export class MyApp {
     public splashScreen: SplashScreen, public global: AppState,
     private shake: Shake, private audioCtrl: AudioService) {
     this.initializeApp();
+    this.initializeFirebase();
+  }
+
+  initializeFirebase() {
+    let config = {
+      apiKey: "AIzaSyAK2DSpw4LHsYS6tPzgfHmZnVM32uQaQn4",
+      authDomain: "star-warnic.firebaseapp.com",
+      databaseURL: "https://star-warnic.firebaseio.com",
+      projectId: "star-warnic",
+      storageBucket: "star-warnic.appspot.com",
+      messagingSenderId: "459136741480"
+    };
+    firebase.initializeApp(config);
   }
 
   initializeApp() {

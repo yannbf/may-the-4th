@@ -1,8 +1,10 @@
+import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
 import { SwapiProvider } from '../../providers/swapi/swapi';
 import { AudioService } from '../../providers/audio-service/audio-service';
 import { AppState } from '../../app/app.global';
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
+import { Device } from '@ionic-native/device';
 
 @IonicPage()
 @Component({
@@ -18,8 +20,23 @@ export class HomePage {
   }
 
   constructor(public navCtrl: NavController, public global: AppState,
-    public audioCtrl: AudioService, public swapi: SwapiProvider) {
+    public audioCtrl: AudioService, public swapi: SwapiProvider,
+    public firebaseData: FirebaseDataProvider, private device: Device) {
       this.loadData();
+
+      let user = {
+        uuid: this.device.uuid,
+        name: 'Yann',
+        side: 'light'
+      };
+
+      this.firebaseData.writeUserData(user)
+        .then(data => {
+          console.log('deu certo', user);
+        })
+        .catch(error => {
+          console.log('error!', error);
+        });
   }
 
   loadData() {

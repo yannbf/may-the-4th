@@ -17,6 +17,8 @@ import { OmdbProvider } from '../providers/omdb/omdb';
 import { GoogleImagesProvider } from '../providers/google-images/google-images';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { Device } from '@ionic-native/device';
+import { FirebaseDataProvider } from '../providers/firebase-data/firebase-data';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     GoogleImagesProvider,
     InAppBrowser,
     YoutubeVideoPlayer,
+    FirebaseDataProvider,
+    Device,
   ]
 })
 export class AppModule {}
