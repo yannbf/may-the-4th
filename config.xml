@@ -89,4 +89,6 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
     <plugin name="com.bunkerpalace.cordova.YoutubeVideoPlayer" spec="https://github.com/Glitchbone/CordovaYoutubeVideoPlayer.git" />
     <plugin name="cordova-plugin-device" spec="~1.1.4" />
+    <plugin name="cordova-plugin-flashlight" spec="~3.2.0" />
+    <plugin name="cordova-sqlite-storage" spec="~2.0.4" />
 </widget>

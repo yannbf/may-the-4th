@@ -37,6 +37,7 @@ export class AudioService {
     } else {
       let audioPath = this.preloadedAudios.get(key);
       let audio = new Audio(audioPath);
+      audio.load();
       audio.play();
     }
   }

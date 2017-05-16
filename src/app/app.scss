@@ -76,3 +76,7 @@ ion-card {
 	0% { top: 100%; }
 	100% { top: -170%; }
 }
+
+.darkside-button .button-inner{
+  color: $darkside-red;
+}

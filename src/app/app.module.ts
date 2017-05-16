@@ -1,3 +1,4 @@
+import { AlertService } from '../providers/alert/alert';
 import { AppState } from './app.global';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -19,6 +20,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Device } from '@ionic-native/device';
 import { FirebaseDataProvider } from '../providers/firebase-data/firebase-data';
+import { Flashlight } from '@ionic-native/flashlight';
+import { IonicStorageModule } from '@ionic/storage';
+import { MotionProvider } from '../providers/motion/motion';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ import { FirebaseDataProvider } from '../providers/firebase-data/firebase-data';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,6 +54,9 @@ import { FirebaseDataProvider } from '../providers/firebase-data/firebase-data';
     YoutubeVideoPlayer,
     FirebaseDataProvider,
     Device,
+    Flashlight,
+    AlertService,
+    MotionProvider,
   ]
 })
 export class AppModule {}

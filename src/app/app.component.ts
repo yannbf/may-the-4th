@@ -1,3 +1,4 @@
+import { Device } from '@ionic-native/device';
 import { AudioService } from '../providers/audio-service/audio-service';
 import { AppState } from './app.global';
 import { Component, ViewChild } from '@angular/core';
@@ -17,7 +18,8 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, public global: AppState,
-    private shake: Shake, private audioCtrl: AudioService) {
+    private shake: Shake, private audioCtrl: AudioService,
+    private device: Device) {
     this.initializeApp();
     this.initializeFirebase();
   }
@@ -36,18 +38,11 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+
+      this.global.set('uuid', this.device.uuid);
       this.global.set('side', 'light');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      if (this.platform.is('cordova')){
-        this.watchForSwings();
-      }
-    });
-  }
-
-  watchForSwings() {
-    const watch = this.shake.startWatch(18).subscribe(() => {
-      this.audioCtrl.swingLightSaber();
     });
   }
 }
