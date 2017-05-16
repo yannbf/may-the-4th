@@ -32,14 +32,14 @@ export class AudioService {
   }
 
   play(key) {
-    if (this.platform.is('cordova')) {
-      this.nativeAudio.play(key);
-    } else {
+    // if (this.platform.is('cordova')) {
+    //   this.nativeAudio.play(key);
+    // } else {
       let audioPath = this.preloadedAudios.get(key);
       let audio = new Audio(audioPath);
       audio.load();
       audio.play();
-    }
+    // }
   }
 
   swingLightSaber() {

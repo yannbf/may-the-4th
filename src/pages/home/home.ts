@@ -1,10 +1,6 @@
-import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
 import { SwapiProvider } from '../../providers/swapi/swapi';
-import { AudioService } from '../../providers/audio-service/audio-service';
-import { AppState } from '../../app/app.global';
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, NavController, Platform } from 'ionic-angular';
-import { Device } from '@ionic-native/device';
+import { IonicPage, NavController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -20,13 +16,7 @@ export class HomePage {
   }
 
   constructor(public navCtrl: NavController,
-    public global: AppState,
-    public audioCtrl: AudioService,
-    public swapi: SwapiProvider,
-    public platform: Platform,
-    public firebaseData: FirebaseDataProvider,
-    private device: Device,
-    public alertCtrl: AlertController) {
+    public swapi: SwapiProvider,) {
       this.loadData();
     }
 
@@ -35,11 +25,6 @@ export class HomePage {
       this.films = data.results;
       this.films.push(this.last);
     });
-  }
-
-  changeTheme(side){
-    this.global.set('side', side);
-    this.audioCtrl.play('turnLightSaberOn');
   }
 
   viewFilmDetail(film) {
