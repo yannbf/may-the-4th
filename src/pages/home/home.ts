@@ -1,6 +1,6 @@
 import { SwapiProvider } from '../../providers/swapi/swapi';
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, MenuController, NavController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,7 +16,9 @@ export class HomePage {
   }
 
   constructor(public navCtrl: NavController,
-    public swapi: SwapiProvider,) {
+    public swapi: SwapiProvider,
+    public menu: MenuController) {
+      menu.swipeEnable(true, 'menu');
       this.loadData();
     }
 

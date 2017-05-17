@@ -4,6 +4,7 @@ import { Device } from '@ionic-native/device';
 import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
 import { AudioService } from '../../providers/audio-service/audio-service';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Geolocation } from '@ionic-native/geolocation';
 import { AppState } from '../../app/app.global';
 import { IonicPage, Menu, Nav, NavController } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
@@ -44,6 +45,7 @@ export class MenuPage {
     public device: Device,
     public alertCtrl: AlertService,
     public storage: Storage,
+    public geolocation: Geolocation,
     public motionCtrl: MotionProvider) {
     this.initialize();
   }
@@ -58,7 +60,8 @@ export class MenuPage {
 
   initPages() {
     this.pages = [
-      { title: 'Home', component: 'HomePage', active: true, icon: 'sw-logo' },
+      { title: 'Movies', component: 'HomePage', active: true, icon: 'sw-logo' },
+      { title: 'Force map', component: 'WorldMapPage', active: false, icon: 'sw-logo' },
     ];
 
     this.activePage.subscribe((selectedPage: any) => {
@@ -88,18 +91,24 @@ export class MenuPage {
 
   getUserInfo(){
     this.isFirstAccess().then(isFirst => {
-      if(!isFirst) {
+      if(isFirst) {
         this.alertCtrl.getUserName().then( name => {
           this.alertCtrl.getUserSide().then( side => {
-            let user = {
-              name: name,
-              side: side,
-              uuid: this.device.uuid,
-            }
-            this.firebaseData.writeUserData(user);
+            this.geolocation.getCurrentPosition().then(position => {
+              let user = {
+                name: name,
+                side: side,
+                uuid: this.device.uuid,
+                position: {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                }
+              }
+              this.firebaseData.writeUserData(user);
 
-            this.side = side;
-            this.setSide(this.side);
+              this.side = side;
+              this.setSide(this.side);
+            });
           });
         });
       }
