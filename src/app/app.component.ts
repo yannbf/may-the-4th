@@ -1,8 +1,9 @@
+import { MenuShiftType } from '../pages/menu/shift-transition';
 import { Device } from '@ionic-native/device';
 import { AudioService } from '../providers/audio-service/audio-service';
 import { AppState } from './app.global';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Shake } from '@ionic-native/shake';
@@ -41,6 +42,9 @@ export class MyApp {
 
       this.global.set('uuid', this.device.uuid);
       this.global.set('side', 'light');
+
+      MenuController.registerType('shift', MenuShiftType);
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

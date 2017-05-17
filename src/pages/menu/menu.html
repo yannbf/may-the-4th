@@ -6,8 +6,8 @@
   </div>
 </div>
 <ion-split-pane>
-  <ion-menu [content]="content" type="reveal">
-    <ion-header>
+  <ion-menu [content]="content" type="shift">
+    <ion-header no-border>
       <div class="sw-avatar">
         <div #darkSide *ngIf="global.state['side'] === 'dark'">
           <div class="hexagon">
@@ -24,7 +24,7 @@
     </ion-header>
 
     <ion-content>
-      <ion-list>
+      <ion-list no-lines>
         <button *ngFor="let p of pages"
                 menuClose ion-item
                 (click)="openPage(p)"

@@ -80,3 +80,11 @@ ion-card {
 .darkside-button .button-inner{
   color: $darkside-red;
 }
+
+.item, p, h3 {
+    color: #333;
+}
+
+ion-nav {
+    box-shadow: -14px 14px 19px rgba(0,0,0,0.45);
+}
