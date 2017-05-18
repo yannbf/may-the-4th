@@ -25,31 +25,79 @@ export class WorldMapPage {
 
   ionViewDidLoad(): void {
     this.platform.ready().then(() => {
-      this.loadMarkersData();
-      this.watchForChanges();
+      this.initMap();
     });
   }
 
   watchForChanges() {
-    this.firebaseData.watchForUpdates().subscribe(update => {
-      console.log('updated!', update);
-      this.loadMarkersData();
+    this.firebaseData.watchForUpdates().subscribe((update: any) => {
+      this.updateOrAddMarker(update);
     });
+  }
+
+  markers = new Map<string, any>();
+  map: any;
+
+  updateOrAddMarker(data) {
+    let marker = this.markers.get(data.uuid);
+    if(marker){
+      console.log('updated!', data);
+      this.updateMarker(data, marker);
+    } else {
+      console.log('added!', data);
+      this.addMarker(data);
+    }
   }
 
   loadMarkersData(){
     this.firebaseData.fetchUsers().then(users => {
       users = users.val();
-      let arr = [];
+      let markerData = [];
       for (var prop in users) {
-          if (!users.hasOwnProperty(prop)) {
-              continue;
+          if (users.hasOwnProperty(prop)) {
+            markerData.push(users[prop]);
           }
-          arr.push(users[prop]);
       }
-      let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then((map) => {
-        this.mapsCluster.addCluster(map, arr);
+
+      let timeout = 0;
+      markerData.map((data) => {
+        setTimeout(this.addMarker(data),++timeout * 200)
       });
+    });
+  }
+
+  updateMarker(data, marker) {
+    // marker.setLabel(data.name);
+    marker.setPosition(data.position);
+    marker.setIcon(`assets/maps/pin-${data.side}.png`);
+  }
+
+  addMarker(data) {
+    let marker = new google.maps.Marker({
+          clickable: true,
+          position: data.position,
+          animation: google.maps.Animation.DROP,
+          map: this.map,
+          icon: `assets/maps/pin-${data.side}.png`,
+        });
+
+    let infowindow = new google.maps.InfoWindow({
+      content: data.name
+    });
+
+    marker.addListener('click', () => {
+      infowindow.open(this.map, marker);
+    });
+
+    this.markers.set(data.uuid, marker);
+  }
+
+  initMap() {
+    this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then((map) => {
+      // this.mapsCluster.setMarkers(map, arr);
+      this.map = map;
+      this.loadMarkersData();
+      this.watchForChanges();
     });
   }
 

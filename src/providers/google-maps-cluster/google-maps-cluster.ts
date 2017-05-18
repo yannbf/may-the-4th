@@ -35,31 +35,39 @@ export class GoogleMapsClusterProvider {
     //   { lat: -42.735258, lng: 147.438000 },
     //   { lat: -43.999792, lng: 170.463352 }
     // ];
+    this.markers = new Map<string, any>();
   }
-  markers = [];
+
+  markers: Map<string, any>;
   // Deletes all markers in the array by removing references to them.
-  deleteMarkers() {
-    this.setMapOnAll(null);
-    this.markers = [];
-  }
+  // deleteMarkers() {
+  //   this.setMapOnAll(null);
+  //   this.markers = [];
+  // }
 
   // Sets the map on all markers in the array.
-  setMapOnAll(map) {
-    for (var i = 0; i < this.markers.length; i++) {
-      this.markers[i].setMap(map);
-    }
+  // setMapOnAll(map) {
+  //   for (var i = 0; i < this.markers.length; i++) {
+  //     this.markers[i].setMap(map);
+  //   }
+  // }
+
+  updateMarker(data) {
+    this.markers.get(data.uuid).setPosition(data.position);
   }
 
-  addCluster(map, locations) {
+  setMarkers(map, markerData) {
     if (google.maps) {
-      this.deleteMarkers();
+      // this.deleteMarkers();
       //Convert locations into array of markers
-      this.markers = locations.map((location) => {
-        return new google.maps.Marker({
-          position: location.position,
-          label: location.name,
+      markerData.map((data) => {
+        let marker = new google.maps.Marker({
+          position: data.position,
+          label: data.name,
           map: map
         });
+
+        this.markers.set(data.uuid, marker);
       });
       // this.markerCluster = new MarkerClusterer(map, markers, { imagePath: 'assets/maps/m' });
     } else {

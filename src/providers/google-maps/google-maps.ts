@@ -77,7 +77,7 @@ export class GoogleMapsProvider {
         let mapOptions = {
           center: latLng,
           styles: mapStyles,
-          zoom: 12,
+          zoom: 5,
           streetViewControl: false,
           fullscreenControl: false,
           mapTypeControl: false,

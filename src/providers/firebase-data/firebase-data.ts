@@ -32,8 +32,15 @@ export class FirebaseDataProvider {
     firebase.database()
       .ref('ausers')
       .on('child_changed', dataSnapshot => {
-        var users = dataSnapshot.val();
-        this.usersSubject.next(users);
+        var user = dataSnapshot.val();
+        this.usersSubject.next(user);
+      });
+
+    firebase.database()
+      .ref('ausers')
+      .on('child_added', dataSnapshot => {
+        var user = dataSnapshot.val();
+        this.usersSubject.next(user);
       });
 
     return this.usersSubject;
