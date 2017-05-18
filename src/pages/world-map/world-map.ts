@@ -69,16 +69,21 @@ export class WorldMapPage {
   updateMarker(data, marker) {
     // marker.setLabel(data.name);
     marker.setPosition(data.position);
-    marker.setIcon(`assets/maps/pin-${data.side}.png`);
+    marker.setIcon(`assets/maps/pin-${data.side}-${this.getRandomNumber()}.png`);
+  }
+
+  getRandomNumber() {
+    return Math.floor(Math.random() * 6) + 1;
   }
 
   addMarker(data) {
+
     let marker = new google.maps.Marker({
           clickable: true,
           position: data.position,
           animation: google.maps.Animation.DROP,
           map: this.map,
-          icon: `assets/maps/pin-${data.side}.png`,
+          icon: `assets/maps/pin-${data.side}-${this.getRandomNumber()}.png`,
         });
 
     let infowindow = new google.maps.InfoWindow({
@@ -93,11 +98,16 @@ export class WorldMapPage {
   }
 
   initMap() {
-    this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then((map) => {
+    let loadedMap = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then((map) => {
       // this.mapsCluster.setMarkers(map, arr);
+      console.log(map);
       this.map = map;
       this.loadMarkersData();
       this.watchForChanges();
+    }, error => {
+      console.log(error);
+    }).catch(error => {
+      console.log(error);
     });
   }
 

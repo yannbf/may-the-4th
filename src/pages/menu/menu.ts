@@ -61,7 +61,7 @@ export class MenuPage {
   initPages() {
     this.pages = [
       { title: 'Movies', component: 'HomePage', active: true, icon: 'sw-logo' },
-      { title: 'Force map', component: 'WorldMapPage', active: false, icon: 'sw-logo' },
+      { title: 'Force map', component: 'WorldMapPage', active: false, icon: 'sw-death-star' },
     ];
 
     this.activePage.subscribe((selectedPage: any) => {
