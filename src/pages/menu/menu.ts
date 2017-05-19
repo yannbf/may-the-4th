@@ -52,8 +52,6 @@ export class MenuPage {
 
   initialize() {
     this.initPages();
-    // this.getUserInfo();
-    // this.motionCtrl.startWatchingSwings();
     setTimeout(() => this.fade = true, 7000);
     setTimeout(() => this.splash = false, 7800);
   }
@@ -76,43 +74,6 @@ export class MenuPage {
     // we wouldn't want the back button to show in this scenario
     this.content.setRoot(page.component);
     this.activePage.next(page);
-  }
-
-  isFirstAccess(){
-    return this.storage.get('firstAccess').then((data) => {
-      if(!data){
-        this.storage.set('firstAccess', false);
-        return false;
-      } else {
-        return true;
-      }
-    });
-  }
-
-  getUserInfo(){
-    this.isFirstAccess().then(isFirst => {
-      if(isFirst) {
-        this.alertCtrl.getUserName().then( name => {
-          this.alertCtrl.getUserSide().then( side => {
-            this.geolocation.getCurrentPosition().then(position => {
-              let user = {
-                name: name,
-                side: side,
-                uuid: this.device.uuid,
-                position: {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                }
-              }
-              this.firebaseData.writeUserData(user);
-
-              this.side = side;
-              this.setSide(this.side);
-            });
-          });
-        });
-      }
-    });
   }
 
   switchSides(){

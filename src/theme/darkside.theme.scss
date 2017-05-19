@@ -5,8 +5,7 @@
   h1, h2, h3,
   h4, h5, h6,
   p, .toolbar-title,
-  .bar-button-default,  body,
-  div {
+  .bar-button-default {
     color: white;
   }
   .toolbar-background{
@@ -30,9 +29,6 @@
   }
   ion-list {
     background-color: #100815;
-  }
-  .time {
-    background-color: white;
   }
   .item {
     transition: all 1s ease;

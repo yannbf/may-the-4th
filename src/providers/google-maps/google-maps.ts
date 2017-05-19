@@ -14,6 +14,7 @@ export class GoogleMapsProvider {
   mapLoadedObserver: any;
   currentMarker: any;
   apiKey: string = "AIzaSyDJqK65u-FmN5tAldekvsSM1WtiHGfEkcs";
+  markers = new Map<string, any>();
 
   constructor(public connectivityService: ConnectivityProvider, private geolocation: Geolocation) {
 
@@ -27,48 +28,50 @@ export class GoogleMapsProvider {
   }
 
   loadGoogleMaps(): Promise<any> {
-    return new Promise((resolve) => {
-      if (typeof google == "undefined" || typeof google.maps == "undefined") {
-        console.log("Google maps JavaScript needs to be loaded.");
-        this.disableMap();
-        if (this.connectivityService.isOnline()) {
-          window['mapInit'] = () => {
-            this.initMap().then((map) => {
-              resolve(map);
-            });
+    return new Promise((resolve, reject) => {
+      if(this.map) {
+        resolve(this.map);
+      } else {
+        if (typeof google == "undefined" || typeof google.maps == "undefined") {
+          console.log("Google maps JavaScript needs to be loaded.");
+          this.disableMap();
+          if (this.connectivityService.isOnline()) {
+            window['mapInit'] = () => {
+              this.initMap().then((map) => {
+                resolve(map);
+              });
 
-            this.enableMap();
-          }
+              this.enableMap();
+            }
 
-          let script = document.createElement("script");
-          script.id = "googleMaps";
-          if (this.apiKey) {
-            script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
-          } else {
-            script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
+            let script = document.createElement("script");
+            script.id = "googleMaps";
+            if (this.apiKey) {
+              script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+            } else {
+              script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
+            }
+            document.body.appendChild(script);
           }
-          document.body.appendChild(script);
-        }
-      }
-      else {
-        if (this.connectivityService.isOnline()) {
-          this.initMap();
-          this.enableMap();
         }
         else {
-          this.disableMap();
+          if (this.connectivityService.isOnline()) {
+            this.initMap();
+            this.enableMap();
+          }
+          else {
+            this.disableMap();
+          }
         }
+        this.addConnectivityListeners();
       }
-      this.addConnectivityListeners();
     });
-
   }
 
   initMap(): Promise<any> {
 
     this.mapInitialised = true;
     return new Promise((resolve) => {
-      if(this.map) resolve(this.map);
 
       this.geolocation.getCurrentPosition().then((position) => {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -132,5 +135,46 @@ export class GoogleMapsProvider {
       console.log("offline");
       this.disableMap();
     });
+  }
+
+  addMarker(data) {
+
+    let marker = new google.maps.Marker({
+          clickable: true,
+          position: data.position,
+          animation: google.maps.Animation.DROP,
+          map: this.map,
+          icon: `assets/maps/pin-${data.side}-${this.getRandomNumber()}.png`,
+        });
+
+    let infowindow = new google.maps.InfoWindow({
+      content: data.name
+    });
+
+    marker.addListener('click', () => {
+      infowindow.open(this.map, marker);
+    });
+
+    this.markers.set(data.uuid, marker);
+  }
+
+  updateOrAddMarker(data) {
+    let marker = this.markers.get(data.uuid);
+    if(marker){
+      console.log('updated!', data);
+      this.updateMarker(data, marker);
+    } else {
+      console.log('added!', data);
+      this.addMarker(data);
+    }
+  }
+
+  updateMarker(data, marker) {
+    marker.setPosition(data.position);
+    marker.setIcon(`assets/maps/pin-${data.side}-${this.getRandomNumber()}.png`);
+  }
+
+  getRandomNumber() {
+    return Math.floor(Math.random() * 6) + 1;
   }
 }

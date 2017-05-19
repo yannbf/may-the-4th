@@ -31,14 +31,14 @@ export class FirebaseDataProvider {
   watchForUpdates() {
     firebase.database()
       .ref('ausers')
-      .on('child_changed', dataSnapshot => {
+      .on('child_added', dataSnapshot => {
         var user = dataSnapshot.val();
         this.usersSubject.next(user);
       });
 
     firebase.database()
       .ref('ausers')
-      .on('child_added', dataSnapshot => {
+      .on('child_changed', dataSnapshot => {
         var user = dataSnapshot.val();
         this.usersSubject.next(user);
       });

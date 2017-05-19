@@ -1,4 +1,9 @@
 page-menu {
+
+    ion-menu .scroll-content {
+        overflow: hidden;
+    }
+
     #custom-overlay {
         background: url('../assets/img/galaxy.jpg');
         background-size: cover;
