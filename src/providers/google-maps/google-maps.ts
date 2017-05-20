@@ -1,7 +1,7 @@
 import { ConnectivityProvider } from '../connectivity/connectivity';
 import { Injectable } from '@angular/core';
-import { Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+declare var google: any;
 
 @Injectable()
 export class GoogleMapsProvider {
@@ -47,9 +47,9 @@ export class GoogleMapsProvider {
             let script = document.createElement("script");
             script.id = "googleMaps";
             if (this.apiKey) {
-              script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+              script.src = 'https://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
             } else {
-              script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
+              script.src = 'https://maps.google.com/maps/api/js?callback=mapInit';
             }
             document.body.appendChild(script);
           }

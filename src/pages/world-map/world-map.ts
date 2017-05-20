@@ -207,9 +207,11 @@ export class WorldMapPage {
     if(marker){
       console.log('updated!', data);
       this.updateMarker(data, marker);
+      this.updateCounters();
     } else {
       console.log('added!', data);
       this.addMarker(data);
+      this.updateCounters();
     }
 
     // this.updateCounters();

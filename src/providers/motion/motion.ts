@@ -15,7 +15,7 @@ export class MotionProvider {
 
   startWatchingSwings() {
     if(this.platform.is('cordova')){
-      this.watchEvent = this.shake.startWatch(18).subscribe(() => {
+      this.watchEvent = this.shake.startWatch(10).subscribe(() => {
         this.audioCtrl.swingLightSaber();
       });
     } else {
