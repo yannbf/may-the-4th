@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
-import { CacheService } from "ionic-cache/ionic-cache";
+import { CacheService } from "ionic-cache";
 import 'rxjs/add/operator/map';
 
 @Injectable()

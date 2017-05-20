@@ -35,7 +35,7 @@
     "@types/google-maps": "3.2.0",
     "firebase": "^3.9.0",
     "ionic-angular": "3.1.1",
-    "ionic-cache": "^1.1.2",
+    "ionic-cache": "^2.0.1",
     "ionicons": "3.0.0",
     "node-js-marker-clusterer": "^1.0.0",
     "rxjs": "5.1.1",

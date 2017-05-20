@@ -29,7 +29,7 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { GoogleMapsClusterProvider } from '../providers/google-maps-cluster/google-maps-cluster';
 import { AlertService } from '../providers/alert/alert';
-import { CacheService } from "ionic-cache/ionic-cache";
+import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network';
 
 @NgModule({
@@ -40,6 +40,7 @@ import { Network } from '@ionic-native/network';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    CacheModule.forRoot(),
     IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
@@ -52,7 +53,6 @@ import { Network } from '@ionic-native/network';
     SplashScreen,
     Shake,
     NativeAudio,
-    CacheService,
     GoogleImagesProvider,
     InAppBrowser,
     YoutubeVideoPlayer,

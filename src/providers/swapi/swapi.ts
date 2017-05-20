@@ -1,7 +1,7 @@
 import { GoogleImagesProvider } from '../google-images/google-images';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { CacheService } from "ionic-cache/ionic-cache";
+import { CacheService } from "ionic-cache";
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
