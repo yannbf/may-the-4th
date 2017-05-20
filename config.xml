@@ -23,6 +23,7 @@
     <preference name="loadUrlTimeoutValue" value="70000" />
     <preference name="SplashScreenDelay" value="0" />
     <preference name="ShowSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="true"/>
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />

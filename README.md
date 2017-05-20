@@ -6,7 +6,8 @@ Of course I had to make my contribution and see if I could become a Jedi Hackste
 
 ## The inspiration
 
-To be honest I'm not a star wars huuge fan myself, but I've always had interest in knowing more about its movies. I started thinking in making a card game, where each player would get a set of seven cards and compete statuses with each other. Unfortunately my weekend was rushy, but I still wanted to be able to complete the challenge and make a fun app, so I had to change the initial idea to a very simple app that gathered info about the star wars movies.
+To be honest I'm not a star wars huuge fan myself, but I've always had interest in knowing more about its movies. I started thinking in making a card game, where each player would get a set of seven cards and compete statuses with each other. Unfortunately my weekend was rushy, but I still wanted to be able to complete the challenge and make a fun app, so I had to change the initial idea to a very simple app that gathered info about the star wars movies. One thing I did that's fun and can make people confused is I listed the movies chronologically with their respective sequence number. This might be weird at first, as the movies' order was completely unordered: IV, II, I, III, VI, V VII then VIII.
+_Go figure George Lucas' head_.
 
 I ended up winning the challenge! I got so excited I had to improve the project.
 
@@ -26,12 +27,16 @@ I ended up winning the challenge! I got so excited I had to improve the project.
 - Custom sidemenu transition
 - Switching sides (app theme)
 - Fetching data
+- Sound effects and Jedi Mode
 - The Force map
-- Jedi Mode
 
 ## Animated(ish) Splash Icon
 
-_Talk about how it was done_
+As the app was about star wars, it was almost obligatory to have a star wars intro. Note that this is very experimental, but it was fun to see how it ended up.
+
+Basically, I set the app to not have a splashscreen. Then, added a `div` which would contain the star was logo and a background image of a galaxy. On the app start, I would show that div and after a few seconds delay, fade it out. To make that logo sliding effect just like the star wars movie does, I used css and `@keyframes` animations that would change the logo's perspective and add a sliding animation, from bottom to top.
+
+[INSERT ANIMATION GIF HERE]
 
 ## Custom icons
 
@@ -67,19 +72,50 @@ Did you know this is all the code to create that sweet slide to reveal animation
 
 ## Switching side (app theme)
 
-_Talk about how it was done_
+Dinamically switching the app's theme may seem a bit complicated, but it's actually quite simple!
+
+This feature can be seen in detail [here](https://github.com/yannbf/ionic3-components/tree/master/src/pages/theming), but I 'll try to quickly explain it:
+
+I had to create a `Global State` class, that would share any information across every page whenever needed. This way, I could set info about the theme just like:
+```
+changeTheme(theme) {
+    this.global.set('theme', theme);
+}
+```
+
+Which could be instantly accessed anywhere with `this.global.get('theme')`.
+
+
+Then, wrap the whole app in a div such as:
+```
+<div class="{{global.state['theme']}}">
+    // app.html code...
+</div>
+```
+
+After that, also create as many themes in separate scss files each. For each theme, indicate specific stylings for each element you want to be affected. In this project, I created `theme-darkside.scss` and `theme-lightside.scss`, obviously.
+
+and _boom_, whenever the property 'theme' was changed, the whole app's looks would change instantly!
 
 insert this gif:
 https://media.giphy.com/media/8SxGru3XzElqg/giphy.gif
 
+[ INSERT SWITCHING THEME GIF ]
+
+ps: I have a repo in github that has a lot of custom components and samples of many cool stuff, and theme switching is one of them. If you want, you can check the repo out at:
+
+https://github.com/yannbf/ionic3-components
+
 ## Fetching data
 
-The first thing to do was list the movies. The [SWAPI](https://swapi.co/) was used to gather the star was data. One thing I did that's fun and can make people confused is that I listed the movies chronologically, but show the sequence number of the movies. This might be weird at first, as the movies' order was completely unordered. _Go figure George Lucas' head_.
+The [SWAPI](https://swapi.co/) was used to gather the star was data.
 
 I also wanted to have more info about the movies, like duration, plot, nominations, etc. To do so, I used the [Open Movie Database API](http://www.omdbapi.com/).
 
-## The Force map
+In order to make the app load data faster and add offline support, I used [Ionic Cache](https://github.com/Nodonisko/ionic-cache), a module for request caching which uses Ionic Storage (thus supporting IndexedDB, SQLite and WebSQL)
+
+## Sound effects and Jedi Mode
 _Talk about how it was done_
 
-## Jedi Mode
+## The Force map
 _Talk about how it was done_
