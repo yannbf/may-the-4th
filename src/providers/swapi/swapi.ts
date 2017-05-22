@@ -13,7 +13,7 @@ export class SwapiProvider {
 
   get(endpoint: string) {
     let cacheKey = endpoint;
-    let request  = this.http.get(endpoint + '/').map(res => res.json());
+    let request  = this.http.get(endpoint).map(res => res.json());
     return this.cache.loadFromObservable(cacheKey, request);
   }
 
@@ -56,7 +56,7 @@ export class SwapiProvider {
   }
 
   getFilms(): any {
-    let endpoint = 'films';
+    let endpoint = 'films/';
     return this.get(this.baseUrl + endpoint);
   }
 }
