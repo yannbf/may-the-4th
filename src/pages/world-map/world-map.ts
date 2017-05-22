@@ -10,6 +10,8 @@ import { Storage } from '@ionic/storage';
 import { AlertService } from '../../providers/alert/alert';
 import { Device } from '@ionic-native/device';
 
+declare var google: any;
+
 @IonicPage()
 @Component({
   selector: 'page-world-map',
@@ -31,8 +33,6 @@ export class WorldMapPage {
     public renderer: Renderer,
     public global: AppState,
     public platform: Platform,
-    public mapsCtrl: GoogleMapsProvider,
-    public mapsCluster: GoogleMapsClusterProvider,
     public connectivityService: ConnectivityProvider,
     public menu: MenuController,
     public geolocation: Geolocation,

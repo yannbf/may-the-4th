@@ -4,7 +4,6 @@
 </ion-header>
 
 <ion-content fullscreen [class.galaxy]="film.episode_id == 8">
-
   <div class="header">
     <div class="cover" [ngStyle]="{'background': 'url('+image+')' }">
       <div class="title">
@@ -12,9 +11,9 @@
         <span class="subtitle secondary-font">{{ film.title }}</span>
       </div>
     </div>
-    <button *ngIf="omdbData.imdbRating" ion-fab class="imdb-info" (click)="openIMDB()">
+    <button *ngIf="filmData.imdbRating" ion-fab class="imdb-info" (click)="openIMDB()">
       <span>IMDb</span>
-      <span>{{ omdbData?.imdbRating }}</span>
+      <span>{{ filmData.imdbRating }}</span>
     </button>
   </div>
   <div *ngIf="film.episode_id === 8" class="countdown" style="height: 60vh">
@@ -23,15 +22,15 @@
   </div>
   <div *ngIf="film.episode_id !== 8">
     <div class="details" padding>
-      <div *ngIf="omdbData">
+      <div *ngIf="filmData">
         <h3>Release date</h3>
         <p>{{ film.release_date | date}}</p>
         <h3>Length</h3>
-        <p>{{ omdbData.Runtime }}</p>
+        <p>{{ filmData.duration }}</p>
         <h3>Plot</h3>
-        <p>{{ omdbData.Plot }}</p>
+        <p>{{ filmData.storyLine }}</p>
         <h3>Awards</h3>
-        <p>{{ omdbData.Awards }}</p>
+        <p>{{ filmData.awards }}</p>
       </div>
     </div>
     <div class="characters" *ngIf="characters.length > 0" style="margin-bottom: 4rem">

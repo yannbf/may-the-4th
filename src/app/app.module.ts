@@ -21,16 +21,14 @@ import { IonicStorageModule } from '@ionic/storage';
 // Custom providers
 import { AudioService } from '../providers/audio-service/audio-service';
 import { SwapiProvider } from '../providers/swapi/swapi';
-import { OmdbProvider } from '../providers/omdb/omdb';
 import { GoogleImagesProvider } from '../providers/google-images/google-images';
 import { FirebaseDataProvider } from '../providers/firebase-data/firebase-data';
 import { MotionProvider } from '../providers/motion/motion';
-import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
-import { GoogleMapsClusterProvider } from '../providers/google-maps-cluster/google-maps-cluster';
 import { AlertService } from '../providers/alert/alert';
 import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network';
+import { MovieInfoProvider } from '../providers/movie-info/movie-info';
 
 @NgModule({
   declarations: [
@@ -65,12 +63,10 @@ import { Network } from '@ionic-native/network';
 
     AudioService,
     SwapiProvider,
-    OmdbProvider,
     AlertService,
     MotionProvider,
-    GoogleMapsProvider,
     ConnectivityProvider,
-    GoogleMapsClusterProvider,
+    MovieInfoProvider,
   ]
 })
 export class AppModule {}
