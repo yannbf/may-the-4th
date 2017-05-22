@@ -13,5 +13,9 @@
     .active-menu-item ion-icon{
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px $lightside-blue, 0 0 70px $lightside-blue, 0 0 80px $lightside-blue, 0 0 100px $lightside-blue, 0 0 150px $lightside-blue;
     }
+
+    overlaying-view .toolbar-background {
+        background-color: $lightside-blue !important;
+    }
 }
 

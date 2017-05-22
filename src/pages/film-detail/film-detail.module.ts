@@ -1,3 +1,4 @@
+import { OverlayingViewComponentModule } from '../../components/overlaying-view/overlaying-view.module';
 import { TimerComponentModule } from '../../components/timer/timer.module';
 import { SharedModule } from '../../app/shared.module';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { FilmDetailPage } from './film-detail';
   imports: [
     IonicPageModule.forChild(FilmDetailPage),
     TimerComponentModule,
+    OverlayingViewComponentModule,
     SharedModule,
   ],
   exports: [

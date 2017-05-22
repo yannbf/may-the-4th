@@ -19,6 +19,8 @@ export class FilmDetailPage {
   image      : any;
   filmData   : any = {};
   characters = [];
+  triviaData = [];
+
   movieData  = [
     {
       imdb: 'tt0120915',
@@ -55,6 +57,14 @@ export class FilmDetailPage {
     }
   ]
 
+   viewOptions = {
+        title: 'Trivia',
+        handleHeight: 50,
+        thresholdFromBottom: 200,
+        thresholdFromTop: 200,
+        bounceBack: true
+    };
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public swapi: SwapiProvider,
@@ -83,6 +93,9 @@ export class FilmDetailPage {
       this.movieInfo.getMovieInfo(id).subscribe(data => {
         this.filmData = data;
         loading.dismiss();
+      });
+      this.movieInfo.getTrivia(id).subscribe(data => {
+        this.triviaData = data;
       });
     }
   }

@@ -1,8 +1,6 @@
 import { AppState } from '../../app/app.global';
 import { ConnectivityProvider } from '../../providers/connectivity/connectivity';
 import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
-import { GoogleMapsClusterProvider } from '../../providers/google-maps-cluster/google-maps-cluster';
-import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { Component, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { IonicPage, MenuController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';

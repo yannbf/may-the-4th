@@ -72,9 +72,13 @@
   ion-menu ion-icon{
     // color:$darkside-red;
   }
-  .active-menu-item ion-icon{
+  .active-menu-item ion-icon {
     color:$darkside-red;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px $darkside-red, 0 0 35px $darkside-red, 0 0 40px $darkside-red, 0 0 50px $darkside-red, 0 0 75px $darkside-red;
+  }
+
+  overlaying-view .toolbar-background {
+      background-color: $darkside-red !important;
   }
 }
 
