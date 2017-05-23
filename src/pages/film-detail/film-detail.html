@@ -3,7 +3,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content fullscreen [class.galaxy]="film.episode_id == 8">
+<ion-content fullscreen [class.galaxy]="film.episode_id == 8" (ionScrollEnd)="onScrollEnd($event)">
   <div class="header">
     <div class="cover" [ngStyle]="{'background': 'url('+image+')' }">
       <div class="title">
@@ -67,7 +67,7 @@
   </button>
 </ion-footer>-->
 
-<overlaying-view [options]="viewOptions">
+<overlaying-view #view [options]="viewOptions">
     <div class="content">
       <ion-card padding *ngFor="let trivia of triviaData.common">
         <p class="secondary-font">{{trivia}}</p>

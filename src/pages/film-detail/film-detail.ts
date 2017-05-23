@@ -1,7 +1,7 @@
 import { RomanizePipe } from '../../pipes/romanize/romanize';
 import { SwapiProvider } from '../../providers/swapi/swapi';
-import { Component } from '@angular/core';
-import { IonicPage, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
+import { Component, ViewChild, Renderer } from '@angular/core';
+import { IonicPage, Content, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { MovieInfoProvider } from '../../providers/movie-info/movie-info';
@@ -20,6 +20,8 @@ export class FilmDetailPage {
   filmData   : any = {};
   characters = [];
   triviaData = [];
+  @ViewChild('view') view;
+  @ViewChild(Content) content: Content;
 
   movieData  = [
     {
@@ -72,8 +74,19 @@ export class FilmDetailPage {
     public iab: InAppBrowser,
     private youtube: YoutubeVideoPlayer,
     public loadingCtrl: LoadingController,
+    public renderer: Renderer,
     private platform: Platform) {
     this.film = navParams.data;
+  }
+
+  onScrollEnd($event){
+    if( $event.scrollTop + this.platform.height() >= $event.scrollHeight) {
+      this.renderer.setElementStyle(this.view.element.nativeElement, 'transform', 'translateY(0)');
+    }
+    // console.log('test',$event, this.platform.height())
+  }
+
+  ngAfterViewInit() {
     if(this.film){
       this.image = `assets/img/covers/episode_${this.film.episode_id}.jpg`;
       this.movieTitle = 'Episode ' + new RomanizePipe().transform(this.film.episode_id);
@@ -103,8 +116,8 @@ export class FilmDetailPage {
   loadCharacters() {
     if(this.film){
       for(let i in this.film.characters) {
-        let character = this.film.characters[i];
-        this.swapi.get(character).subscribe(characterData => {
+        let character = this.film.characters[i].split('/')[5];
+        this.swapi.getPerson(character).subscribe(characterData => {
           characterData.photo = this.getAvatar(characterData);
           this.characters.push(characterData);
         });

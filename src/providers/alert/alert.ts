@@ -29,11 +29,10 @@ export class AlertService {
             const confirm = this.alertCtrl.create({
                 title: 'Welcome to Star Warnic!',
                 message: `
-                      <p>Thanks for using this!</p>
+                      <p>Thanks for using this app!</p>
                       <p>We would like to get some basic information of yours in order to keep the app very fun!</p>
-                      <p>On the left menu there's a page with a map that shows all of users and which side they're on!</p>
-                      <p>To do so, we'd love to have your name(or nickname), location and to know which side you're on. Note that this data is not
-                      used anywhere else other than the maps page and it's completely optional!</p>
+                      <p>To do so, we'd love to have your name(or nickname) and location. This data is not
+                      used anywhere else other than the maps page and it's completely optional.</p>
                     `,
                 buttons: [{
                     cssClass: 'darkside-button',
@@ -86,7 +85,7 @@ export class AlertService {
       let inputs =  [
             {
               name: 'name',
-              placeholder: 'Your name'
+              placeholder: 'Your name or nickname'
             },
           ];
 

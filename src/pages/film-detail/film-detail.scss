@@ -12,6 +12,11 @@ page-film-detail {
         margin-top: 0 !important;
     }
 
+    overlaying-view {
+        transition: 1s all;
+        transform: translateY(50px);
+    }
+
     .cover {
         position: relative;
         height: 70vh;
