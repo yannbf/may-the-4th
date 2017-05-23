@@ -11,14 +11,14 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
-    "@angular/common": "4.0.2",
-    "@angular/compiler": "4.0.2",
-    "@angular/compiler-cli": "4.0.2",
-    "@angular/core": "4.0.2",
-    "@angular/forms": "4.0.2",
-    "@angular/http": "4.0.2",
-    "@angular/platform-browser": "4.0.2",
-    "@angular/platform-browser-dynamic": "4.0.2",
+    "@angular/common": "4.1.0",
+    "@angular/compiler": "4.1.0",
+    "@angular/compiler-cli": "4.1.0",
+    "@angular/core": "4.1.0",
+    "@angular/forms": "4.1.0",
+    "@angular/http": "4.1.0",
+    "@angular/platform-browser": "4.1.0",
+    "@angular/platform-browser-dynamic": "4.1.0",
     "@ionic-native/core": "3.6.1",
     "@ionic-native/device": "^3.8.0",
     "@ionic-native/flashlight": "^3.8.0",
@@ -34,16 +34,16 @@
     "@ionic/storage": "^2.0.1",
     "@types/google-maps": "3.2.0",
     "firebase": "^3.9.0",
-    "ionic-angular": "3.1.1",
+    "ionic-angular": "3.2.1",
     "ionic-cache": "^2.0.1",
     "ionicons": "3.0.0",
     "node-js-marker-clusterer": "^1.0.0",
     "rxjs": "5.1.1",
-    "sw-toolbox": "3.4.0",
-    "zone.js": "^0.8.5"
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.10"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "1.3.6",
+    "@ionic/app-scripts": "1.3.7",
     "@ionic/cli-plugin-cordova": "^1.2.0",
     "@ionic/cli-plugin-ionic-angular": "^1.2.0",
     "typescript": "~2.2.1"
