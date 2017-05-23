@@ -1,5 +1,13 @@
-<ion-header #header (click)="toggleScroll()">
+<ion-header #header (click)="toggleScroll()" no-border-top>
+  <div class="header-top" [class.active]="hasScrolledUp">
+  </div>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon *ngIf="!hasScrolledUp" name="arrow-round-up"></ion-icon>
+        <ion-icon *ngIf="hasScrolledUp" name="arrow-round-down"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>{{ title }}</ion-title>
   </ion-navbar>
 </ion-header>

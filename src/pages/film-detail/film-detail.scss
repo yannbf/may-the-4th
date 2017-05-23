@@ -9,6 +9,7 @@ page-film-detail {
 
     overlaying-view .scroll-content {
         padding: 16px !important;
+        margin-top: 0 !important;
     }
 
     .cover {
@@ -40,21 +41,31 @@ page-film-detail {
     }
 
     .imdb-info {
+        background: #ffd700;
+        padding: 6px;
+        color: #333;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+
+    .imdb-rating {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .trailer-icon {
         color: black;
         font-weight: bold;
-        background : #e9ce38;
+        background : $darkside-red;
         position   : absolute;
         right      : 5%;
         top        : 55%;
         height     : 70px;
         width      : 70px;
-
-        .button-inner {
-            flex-flow: column;
-        }
-
-        span:first-child {
-            height: 18px;
+        ion-icon {
+            padding-left: 4px;
+            font-size: 26px;
+            color: white;
         }
     }
 

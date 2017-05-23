@@ -11,9 +11,9 @@
         <span class="subtitle secondary-font">{{ film.title }}</span>
       </div>
     </div>
-    <button *ngIf="filmData.imdbRating" ion-fab class="imdb-info" (click)="openIMDB()">
-      <span>IMDb</span>
-      <span>{{ filmData.imdbRating }}</span>
+
+    <button  ion-fab class="trailer-icon" (click)="openTrailer()">
+      <ion-icon name="play"></ion-icon>
     </button>
   </div>
   <div *ngIf="film.episode_id === 8" class="countdown" style="height: 60vh">
@@ -31,6 +31,10 @@
         <p>{{ filmData.storyLine }}</p>
         <h3>Awards</h3>
         <p>{{ filmData.awards }}</p>
+        <div (click)="openIMDB()">
+          <span class="imdb-info">IMDb</span>
+          <span class="imdb-rating">{{ filmData.imdbRating }}</span>
+        </div>
       </div>
     </div>
     <div class="characters" *ngIf="characters.length > 0" style="margin-bottom: 4rem">
@@ -65,8 +69,8 @@
 
 <overlaying-view [options]="viewOptions">
     <div class="content">
-      <ion-card *ngFor="let trivia of triviaData.common">
-        <p>{{trivia}}</p>
+      <ion-card padding *ngFor="let trivia of triviaData.common">
+        <p class="secondary-font">{{trivia}}</p>
       </ion-card>
     </div>
 </overlaying-view>

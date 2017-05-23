@@ -77,7 +77,8 @@
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px $darkside-red, 0 0 35px $darkside-red, 0 0 40px $darkside-red, 0 0 50px $darkside-red, 0 0 75px $darkside-red;
   }
 
-  overlaying-view .toolbar-background {
+  overlaying-view .toolbar-background,
+  overlaying-view .header-top {
       background-color: $darkside-red !important;
   }
 }
