@@ -8,16 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="moviesList">
-    <div class="movie" *ngFor="let film of films"
-         (click)="viewFilmDetail(film)"
-         [ngStyle]="{'background': getCover(film.episode_id) }">
-      <div class="title">
-        <h1 class="secondary-font">{{ film.title }}</h1>
-      </div>
-      <div class="episode">
-        <span>{{ film.episode_id | romanize }}</span>
-      </div>
+  <div class="movie" *ngFor="let film of films"
+        (click)="viewFilmDetail(film)"
+        [ngStyle]="{'background': getCover(film.episode_id) }">
+    <div class="title">
+      <h1 class="secondary-font">{{ film.title }}</h1>
+    </div>
+    <div class="episode">
+      <span>{{ film.episode_id | romanize }}</span>
     </div>
   </div>
 </ion-content>

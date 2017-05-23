@@ -22,7 +22,7 @@ export class MenuShiftType extends MenuType {
         let contentApi = new Animation(plt, menu.getContentElement());
         let scale = 0.85;
         contentApi.fromTo('translateX', '0px', contentOpenedX);
-        contentApi.fromTo('rotateY', '0deg', '25deg');
+        // contentApi.fromTo('rotateY', '0deg', '25deg');
         contentApi.fromTo('scale', '1', `${scale}`);
         contentApi.beforeAddClass('opening');
         contentApi.afterRemoveClass('opening');
