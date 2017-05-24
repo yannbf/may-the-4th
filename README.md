@@ -34,15 +34,17 @@ When I learned [my app had actually won](http://blog.ionic.io/and-the-1st-ionic-
 - Switching sides (app theme)
 - Fetching data
 - Sound effects and Jedi Mode
-- Firebasea and The Force map
+- Firebase and The Force map
 
 ## Animated(ish) Splash Icon
 
-As the app was about Star Wars, it was almost obligatory to have a Star Wars intro. Note that this is very experimental, but it was fun to see how it ended up.
+As the app is about Star Wars, it was almost obligatory to have a classic Star Wars intro. Note that this is very experimental, but it was fun to see how it ended up.
 
-Basically, I set the app to not have a splashscreen. Then, added a `div` which would contain the star was logo and a background image of a galaxy. On the app start, I would show that div and after a few seconds delay, fade it out. To make that logo sliding effect just like the Star Wars movie does, I used css and `@keyframes` animations that would change the logo’s perspective and add a sliding animation, from bottom to top.
+Basically, I set the app to not have a splashscreen. Then, added a `div` which contains the Star Wars logo and a background image of a galaxy. On the app start, I show that div and after a few seconds delay, fade it out. To make that logo sliding effect just like the Star Wars movie does, I used css and `@keyframes` animations that would change the logo’s perspective and add a sliding animation, from bottom to top:
 
 [INSERT ANIMATION GIF HERE]
+
+To be honest this experience gave me a few issues when in a PWA, as the splash is played every time the user updates the url and it gets a bit annoying. I had to make a few workarounds, and I recomment trying another approach.
 
 ## Custom icons
 
@@ -51,6 +53,9 @@ In this project I added custom icons in order to make it cooler, following the S
 To do so, I downloaded a few svg icons from [The Noun Project](https://thenounproject.com/)(amazing website, you should definitely check it out) and created my own font by using the online app [Icon Moon](https://icomoon.io/app/).
 
 Right after, I downloaded my custom font and added into the projects assets, then got into the scss and extended the default `ion-icon` so that I could use the same element to either use default icons or my custom icons, such as `<ion-icon name="darth-vader">`.
+
+[INSERT SIDEMENU IMAGE WITH CUSTOM ICONS]
+_Sidemenu with custom Star Wars icons_
 
 You can check the code out [here](https://github.com/yannbf/may-the-4th/blob/master/src/theme/variables.scss#L76)
 
@@ -72,14 +77,13 @@ class MenuRevealType extends MenuType {
 MenuController.registerType('reveal', MenuRevealType);
 ```
 
-Did you know this is all the code to create that sweet slide to reveal animation on the sidemenu? So with the help of [EbilPanda](https://github.com/EbilPanda) I used a similar approach and was able to create this very elegant custom effect:
+Did you know this is all the code used to create that sweet slide to reveal animation on the sidemenu? So with the help of [EbilPanda](https://github.com/EbilPanda) I used a similar approach and was able to create this very elegant custom effect:
 
 [ SIDEMENU EFFECT GIF ]
 
 ## Switching side (app theme)
 
 The app offers you the option to be either on the light side or the dark side. Upon picking your side, the whole UI is changed dinamically!
-
 
 Dinamically switching the app’s theme may seem a bit complicated, but it’s actually quite simple!
 
@@ -128,7 +132,11 @@ I was hoping to get some sound effects on the app to make it more fun, and what 
 
 With that in mind, I created a provider that uses Ionic Native Audio plugin to store and play the sounds natively, and also falls back to HTML5 Audio, in case the user is on the browser.
 
-These sounds would be played in two ocasions: When switching sides or when Jedi Mode is on.
+[ INSERT VIDEO WITH SOUND ]
+
+These sounds would be played in two ocasions: When switching sides or when Jedi mode is on.
+
+The Jedi mode is a feature that unfortunately doesn't work on the PWA, but you can check it out by installing the apk/ipa on your app. What it does is it turns your flashlight on with a nice lightsaber sound and every time you swing the phone, the app reproduces a lightsaber swinging sound. This way you can play around and feel like a Jedi!
 
 ## Firebase and The Force map
 
@@ -138,8 +146,10 @@ https://media.giphy.com/media/8SxGru3XzElqg/giphy.gif
 
 To do so, I created a project on firebase and integrated it on the app, and on the maps page I request and register the user information (name and location). Then data is fetched from firebase database, and each person gets an avatar. If you choose the force, you get to be one of the good guys(C-3PO, Princess Leia..), otherwise, one of the bad guys (Darth Vader, Stormtrooper..). Along with that, there are two lightsabers dueling as the number of users grow. This all happens in real time, so you can see the users dropping on the map and the numbers going up.
 
+[ INSERT GIF OF MAPS CHANGING IN REAL TIME ]
 
-# May the force be with ALL of us
+
+## May the force be with ALL of us
 
 I was really flattered to have won the challenge but I'm even more grateful to have the opportunity to share my experience with you all. Ionic is an amazing and versatile platform that has given me many wonderful opportunities ever since the first day I started using it (it was still on beta!).
 I wish this was interesting and brought inspiration to you! If you are interested in knowing more about this project, have any questions or just want to chat, feel free to hit me on [Ionic's worldwide slack](https://ionicworldwide.herokuapp.com/) or contact me through [my website](https://yannbraga.com/).
