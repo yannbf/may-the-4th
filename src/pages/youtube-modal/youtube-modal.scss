@@ -1,0 +1,21 @@
+page-youtube-modal {
+    .toolbar button.bar-button span, .toolbar-title {
+        color: white;
+    }
+    .scroll-content {
+        background: black;
+    }
+    .video-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ion-buttons {
+        position: absolute;
+    }
+    ion-icon {
+        color: white;
+        font-size: 2rem;
+    }
+}

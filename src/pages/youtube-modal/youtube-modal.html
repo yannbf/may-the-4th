@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-buttons left>
+    <button ion-button clear (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+  <div class="video-container">
+    <iframe height="190" onload="this.width=screen.width" [src]="url" frameborder="0" ></iframe>
+  </div>
+</ion-content>

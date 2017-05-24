@@ -1,7 +1,15 @@
 import { RomanizePipe } from '../../pipes/romanize/romanize';
 import { SwapiProvider } from '../../providers/swapi/swapi';
 import { Component, ViewChild, Renderer } from '@angular/core';
-import { IonicPage, Content, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
+import {
+    Content,
+    IonicPage,
+    LoadingController,
+    ModalController,
+    NavController,
+    NavParams,
+    Platform
+} from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { MovieInfoProvider } from '../../providers/movie-info/movie-info';
@@ -75,6 +83,7 @@ export class FilmDetailPage {
     private youtube: YoutubeVideoPlayer,
     public loadingCtrl: LoadingController,
     public renderer: Renderer,
+    public modalCtrl: ModalController,
     private platform: Platform) {
     this.film = navParams.data;
   }
@@ -147,12 +156,13 @@ export class FilmDetailPage {
 
   openTrailer () {
     let id = this.movieData[this.film.episode_id-1].id;
-
+    let modal = this.modalCtrl.create('YoutubeModalPage', {id: id});
+    // let url = `https://www.youtube.com/watch?v=${id}`;
+    modal.present();
     // if(this.platform.is('cordova')){
       // this.youtube.openVideo(id);
     // } else {
-      let url = `https://www.youtube.com/watch?v=${id}`;
-      this.openOnBrowser(url);
+      // this.openOnBrowser(url);
     // }
   }
 }
