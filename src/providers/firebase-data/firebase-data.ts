@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class FirebaseDataProvider {
 
-  usersSubject    = new Subject();
+  usersSubject = new Subject();
 
   constructor(public global: AppState) {  }
 
@@ -17,9 +17,14 @@ export class FirebaseDataProvider {
 
   setSide(side){
     let uuid = this.global.get('uuid');
-    return firebase.database().ref('ausers/' + uuid + '/side').transaction( () =>{
-      return side;
-    })
+    var ref = firebase.database().ref('ausers/' + uuid);
+    ref.once('value', (snapshot) => {
+      if (snapshot.exists()) {
+        return firebase.database().ref('ausers/' + uuid + '/side').transaction( () =>{
+          return side;
+        });
+      }
+    });
   }
 
   fetchUsers() {
@@ -44,5 +49,21 @@ export class FirebaseDataProvider {
       });
 
     return this.usersSubject;
+  }
+
+  addRandomUser() {
+    let side = Math.floor(Math.random() * 2);
+    let user = {
+      name: 'test',
+      icon: Math.floor(Math.random() * 6) + 1,
+      uuid: Math.floor(Math.random() * 125123) + 1,
+      side: side == 1 ? 'light' : 'dark',
+      position : {
+        lat: -(Math.floor(Math.random() * 6) + 1),
+        lng: Math.floor(Math.random() * 30) + 5
+      }
+    }
+
+    return firebase.database().ref('ausers/' + user.uuid).set(user);
   }
 }

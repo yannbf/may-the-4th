@@ -81,9 +81,12 @@ export class FilmDetailPage {
 
   onScrollEnd($event){
     if( $event.scrollTop + this.platform.height() >= $event.scrollHeight) {
+      this.renderer.setElementStyle(this.view.element.nativeElement, 'transition', 'all 1s');
       this.renderer.setElementStyle(this.view.element.nativeElement, 'transform', 'translateY(0)');
+    } else if ($event.scrollTop <= 100) {
+      this.renderer.setElementStyle(this.view.element.nativeElement, 'transition', 'all 1s');
+      this.renderer.setElementStyle(this.view.element.nativeElement, 'transform', 'translateY(56px)');
     }
-    // console.log('test',$event, this.platform.height())
   }
 
   ngAfterViewInit() {

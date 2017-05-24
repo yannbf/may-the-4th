@@ -28,7 +28,7 @@ export class MenuPage {
   rootPage: any = 'HomePage';
   activePage    = new Subject();
 
-  splash        = false;
+  splash        = true;
   fade          = false;
   jediMode      = false;
   side          = 'light';

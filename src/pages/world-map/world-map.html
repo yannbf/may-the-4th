@@ -5,7 +5,7 @@
     </button>
     <ion-title>World map</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)='centerToMyLocation()'>
+      <button ion-button icon-only (click)='addRandomUser()'>
         <ion-icon name="ios-locate-outline"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,15 +13,20 @@
 </ion-header>
 
 <ion-content>
-
     <div #pleaseConnect id="please-connect">
         <p>Please connect to the Internet...</p>
     </div>
 
-
     <div #map id="map"></div>
-    <div class="info">
-      <h2>Light: {{ lightSideCount }}</h2>
-      <h2>Dark: {{ darkSideCount }}</h2>
+    <div id="lightsaber-container">
+      <span [style.width.%]="(lightSideCount/users.length) * 100" class="lightsaber dark"></span>
+      <span [style.width.%]="(darkSideCount/users.length) * 100" class="lightsaber light"></span>
+    </div>
+    <div class="info" style="text-align: center">
+      <span class="float-left">Dark: {{ darkSideCount }}</span>
+      <span class="float-right">Light: {{ lightSideCount }}</span>
+      <!--<button ion-button (click)="addRandomUser()">
+        addRandomUser
+      </button>-->
     </div>
 </ion-content>

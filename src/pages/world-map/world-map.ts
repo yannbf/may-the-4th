@@ -46,9 +46,8 @@ export class WorldMapPage {
 
   isFirstAccess(){
     return this.storage.get('firstAccess').then((data) => {
-      if(!data){
-        this.storage.set('firstAccess', false);
-        return false;
+      if(data !== null){
+        return data;
       } else {
         return true;
       }
@@ -62,6 +61,7 @@ export class WorldMapPage {
           if(yes){
             this.getUserInfo();
           }
+          this.storage.set('firstAccess', false);
         });
       }
     });
@@ -118,6 +118,10 @@ export class WorldMapPage {
         this.disableMap();
       }
     }
+  }
+
+  addRandomUser() {
+    this.firebaseData.addRandomUser();
   }
 
   initMap() {
@@ -211,16 +215,11 @@ export class WorldMapPage {
     let marker = this.markers.get(data.uuid);
 
     if(marker){
-      console.log('updated!', data);
       this.updateMarker(data, marker);
-      this.updateCounters();
     } else {
-      console.log('added!', data);
       this.addMarker(data);
-      this.updateCounters();
     }
-
-    // this.updateCounters();
+    this.updateCounters();
   }
 
   updateMarker(data, marker) {
@@ -252,9 +251,8 @@ export class WorldMapPage {
           }
       }
 
-      let timeout = 0;
       this.users.map((user) => {
-        setTimeout(this.saveMarker(user),++timeout * 200)
+        setImmediate(this.saveMarker(user));
       });
     });
   }
