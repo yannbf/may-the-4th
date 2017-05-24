@@ -38,7 +38,7 @@
           <ion-icon name="sw-c3p0" *ngIf="global.state['side'] === 'light'" item-left></ion-icon>
           Switch sides
         </button>
-        <ion-item>
+        <ion-item *ngIf="onMobile">
           <ion-label>Jedi mode</ion-label>
           <ion-toggle (ionChange)="toggleJediMode()" [(ngModel)]="jediMode"></ion-toggle>
         </ion-item>

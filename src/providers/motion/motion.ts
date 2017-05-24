@@ -14,7 +14,7 @@ export class MotionProvider {
   }
 
   startWatchingSwings() {
-    if(this.platform.is('cordova')){
+    if(this.platform.is('cordova')) {
       this.watchEvent = this.shake.startWatch(10).subscribe(() => {
         this.audioCtrl.swingLightSaber();
       });
@@ -25,6 +25,7 @@ export class MotionProvider {
           let swing         = Math.abs(this.axisMovement - accelerationX);
 
           if(swing >= 12){
+            alert(swing);
             this.audioCtrl.swingLightSaber();
             this.axisMovement = accelerationX;
           } else {

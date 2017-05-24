@@ -60,14 +60,8 @@
     </div>
   </div>
 </ion-content>
-<!--<ion-footer>
-  <button ion-button full icon-left class="footer-btn" (click)="openTrailer()">
-    <ion-icon name="logo-youtube"></ion-icon>
-    Watch trailer
-  </button>
-</ion-footer>-->
 
-<overlaying-view #view [options]="viewOptions">
+<overlaying-view #view [options]="viewOptions" [hidden]="film.episode_id === 8" >
     <div class="content">
       <ion-card padding *ngFor="let trivia of triviaData.common">
         <p class="secondary-font">{{trivia}}</p>

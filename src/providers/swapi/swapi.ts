@@ -36,7 +36,7 @@ export class SwapiProvider {
   }
 
   getPerson(id): any {
-    let endpoint = 'people/' + id;
+    let endpoint = 'people/' + id + '/';
     return this.get(this.baseUrl + endpoint);
   }
 

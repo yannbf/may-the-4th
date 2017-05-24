@@ -5,6 +5,7 @@
     </button>
   </ion-buttons>
   <div class="video-container">
-    <iframe height="190" allowfullscreen="allowfullscreen" onload="this.width=screen.width" [src]="url" frameborder="0" ></iframe>
+    <ion-spinner name="dots"></ion-spinner>
+    <iframe class="yt-video" allowfullscreen="allowfullscreen" [src]="url" frameborder="0" ></iframe>
   </div>
 </ion-content>

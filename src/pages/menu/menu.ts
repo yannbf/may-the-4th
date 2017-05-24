@@ -6,7 +6,7 @@ import { AudioService } from '../../providers/audio-service/audio-service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AppState } from '../../app/app.global';
-import { IonicPage, Menu, Nav, NavController } from 'ionic-angular';
+import { IonicPage, Menu, Nav, NavController, Platform } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 import { Flashlight } from '@ionic-native/flashlight';
 import { Storage } from '@ionic/storage';
@@ -28,10 +28,11 @@ export class MenuPage {
   rootPage: any = 'HomePage';
   activePage    = new Subject();
 
-  splash        = true;
+  splash        = false;
   fade          = false;
   jediMode      = false;
   side          = 'light';
+  onMobile      = false;
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
@@ -46,14 +47,35 @@ export class MenuPage {
     public alertCtrl: AlertService,
     public storage: Storage,
     public geolocation: Geolocation,
-    public motionCtrl: MotionProvider) {
+    public motionCtrl: MotionProvider,
+    public platform: Platform) {
     this.initialize();
   }
 
   initialize() {
     this.initPages();
+    this.onMobile =  navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone');
+
+    this.storage.get('splashInfo').then(data => {
+      if(data) {
+        var now = new Date();
+        var difference = now.getTime() - data.getTime();
+        var minutesDifference = Math.round(difference / 60000);
+
+        if(minutesDifference >= 1) {
+          this.showSplash();
+        }
+      } else {
+        this.showSplash();
+      }
+    });
+  }
+
+  showSplash() {
+    this.splash = true;
     setTimeout(() => this.fade = true, 7000);
     setTimeout(() => this.splash = false, 7800);
+    this.storage.set('splashInfo', new Date());
   }
 
   initPages() {
@@ -93,11 +115,11 @@ export class MenuPage {
 
   toggleJediMode(){
     if(this.jediMode){
-      this.flashlight.switchOn();
+      if (this.platform.is('cordova')) this.flashlight.switchOn();
       this.audioCtrl.play('turnLightSaberOn');
       this.motionCtrl.startWatchingSwings();
     } else {
-      this.flashlight.switchOff();
+      if (this.platform.is('cordova')) this.flashlight.switchOff();
       this.motionCtrl.stopWatchingSwings();
     }
   }

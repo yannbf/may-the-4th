@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="movie" *ngFor="let film of films"
-        (click)="viewFilmDetail(film)"
+        (tap)="viewFilmDetail(film)"
         [ngStyle]="{'background': getCover(film.episode_id) }">
     <div class="title">
       <h1 class="secondary-font">{{ film.title }}</h1>

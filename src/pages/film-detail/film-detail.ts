@@ -8,7 +8,8 @@ import {
     ModalController,
     NavController,
     NavParams,
-    Platform
+    Platform,
+    App
 } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
@@ -84,8 +85,14 @@ export class FilmDetailPage {
     public loadingCtrl: LoadingController,
     public renderer: Renderer,
     public modalCtrl: ModalController,
-    private platform: Platform) {
+    private platform: Platform,
+    private app: App) {
     this.film = navParams.data;
+
+    if(!this.film){
+      console.log('maladde')
+      this.app.getRootNav().setRoot('MenuPage');
+    }
   }
 
   onScrollEnd($event){
