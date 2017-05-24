@@ -2,27 +2,29 @@
 
 So the ionic team came up with this amazing event called [Ionic Jedi Hackster](http://blog.ionic.io/become-an-ionic-jedi-hackster/), which aimed at engaging their developers to create a Star Wars themed app in under 48 hours using the latest and greatest [Ionic](https://ionicframework.com) and the recently released [Ionic CLI v3](http://blog.ionic.io/announcing-ionic-cli-v3/).
 
-Of course I had to contribute, to see if I could become a *Jedi Hackster*.
+Of course I had to contribute, to see if I could *become a Jedi Hackster*.
 
 ## The Inspiration
 
-To be honest, I’m not a huge Star Wars fan, but I’ve always had interest in knowing more about its movies. I started thinking in making a card game, where each player would get a set of seven cards and compete statuses with each other. Unfortunately my weekend was rushy, but I still wanted to be able to complete the challenge and make a fun app, so I had to change the initial idea to a very simple app that gathered info about the Star Wars movies. One thing I did that was fun (and might confuse people) is I listed the movies chronologically with their respective sequence number. This might be weird, as the movies’ sequence order was completely unordered in relation to their chronological release time: IV, II, I, III, VI, V VII then VIII.
+To be honest, I’m not a huge Star Wars fan, but I’ve always had interest in knowing more about its movies. I started thinking in making a card game, where each player would get a set of seven cards and compete statuses with each other. Unfortunately my weekend was rushy, but I still wanted to be able to complete the challenge and make a fun app, so I had to change the initial idea to a very simple app that gathered info about the Star Wars movies.
+One thing I did that was fun (and might confuse people) is I listed the movies chronologically with their respective sequence number. This might be weird, as the movies’ sequence order was completely unordered in relation to their chronological release date: IV, II, I, III, VI, V VII then VIII.
 _Go figure George Lucas’ head_.
 
-When I learned I my app had actually won, I got so excited I decided to improve the project! Finally I had a bit more time to actually add some features I wanted:
+When I learned [my app had actually won](http://blog.ionic.io/and-the-1st-ionic-jedi-hackster-is/), I got so excited I decided to improve the project! Finally I had a bit more time to actually add some features I wanted:
 - Better work on UI
 - Enhance support for browser (audio and accelerometer)
+- Embed youtube videos in the app
 - Integrate the app with firebase and have a real time updated map!
 
-## Technologies Uused:
+## Technologies Used:
 
 - [SWAPI (Star wars API)](https://swapi.co/)
-- [ODBM (Open Movie Database) API](http://www.omdbapi.com/)
 - [Ionic 3.2.1](https://github.com/driftyco/ionic)
 - [Firebase 3.9](://firebase.google.com/)
 - [Ionic Cache](https://github.com/Nodonisko/ionic-cache)
 - [Google Maps API v3](https://developers.google.com/maps/documentation/javascript/)
 - [Ionic Native plugins](https://ionicframework.com/docs/native/): Shake, Geolocation, Device, Flashlight, Native Audio, Network
+- [Cheerio](https://github.com/cheeriojs/cheerio)
 
 ## The App’s Features
 
@@ -78,7 +80,6 @@ Did you know this is all the code to create that sweet slide to reveal animation
 
 The app offers you the option to be either on the light side or the dark side. Upon picking your side, the whole UI is changed dinamically!
 
-https://media.giphy.com/media/8SxGru3XzElqg/giphy.gif
 
 Dinamically switching the app’s theme may seem a bit complicated, but it’s actually quite simple!
 
@@ -111,11 +112,15 @@ _P.S. I have a [Github repository](https://github.com/yannbf/ionic3-components) 
 
 ## Fetching Data
 
-The SWAPI was used to gather the Star Wars data.
-
-I also wanted to have more info about the movies, like duration, plot, nominations, etc. To do so, I used the OMDB API.
+The SWAPI was used to gather Star Wars specific data, like which characters appear in which movie.
 
 To support faster loading of data and offline support, I used Ionic Cache, a module for request caching which uses Ionic Storage (thus supporting IndexedDB, SQLite and WebSQL). This allowed me to enhance the app's performance as the data would only be fetched remotely once and later on would be loaded instantly.
+
+I also wanted to have more info about the movies, such as duration, plot, nominations, trivia, etc. To do so, I used the [ODBM (Open Movie Database) API](http://www.omdbapi.com/).
+The API is quite good, as it fetches info from IMDb, which is what I wanted. However, a really unexpected thing happened: a few days ago they shut down their open api and only opened for their patreons. It was quite frustrating, but encouraged me to do something way more interesting: get the info myself with a webscrapper! Apart from movie informations, I also wanted to have a trivia section with lots of interesting facts.
+
+In order to populate the movie data, I wrote a [simple webscrapper in node](https://github.com/yannbf/imdb-scrapper/blob/master/index.js) that accesses the imdb url of a given movie and uses [Cheerio](https://github.com/cheeriojs/cheerio) to read the DOM elements just like people are used to do with jQuery selectors. It is as simple as: `$('.movie').text()`. If you never thought of writing a webscrapper, the project can be a good reference, feel free to use it! It's quite fun :)
+
 
 ## Sound effects and Jedi Mode
 
@@ -127,6 +132,19 @@ These sounds would be played in two ocasions: When switching sides or when Jedi 
 
 ## Firebase and The Force map
 
-This was the feature I most wanted to do. I wanted to have a map that could show all users and which side they had chosen, so we could see which would prevail.
+This was the feature I most wanted to do. I wanted to have a map that could show all users and which side they are on, so we could see which would prevail.
 
-To do so, I created a project on firebase and integrated it with the app, and on the maps page I request and register the user name and location. Then data is fetched from firebase database, and each person gets an avatar. If you choose the force, you get to be one of the good guys(C-3PO, Princess Leia..), otherwise, one of the bad guys (Darth Vader, Stormtrooper..)
+https://media.giphy.com/media/8SxGru3XzElqg/giphy.gif
+
+To do so, I created a project on firebase and integrated it on the app, and on the maps page I request and register the user information (name and location). Then data is fetched from firebase database, and each person gets an avatar. If you choose the force, you get to be one of the good guys(C-3PO, Princess Leia..), otherwise, one of the bad guys (Darth Vader, Stormtrooper..). Along with that, there are two lightsabers dueling as the number of users grow. This all happens in real time, so you can see the users dropping on the map and the numbers going up.
+
+
+# May the force be with ALL of us
+
+I was really flattered to have won the challenge but I'm even more grateful to have the opportunity to share my experience with you all. Ionic is an amazing and versatile platform that has given me many wonderful opportunities ever since the first day I started using it (it was still on beta!).
+I wish this was interesting and brought inspiration to you! If you are interested in knowing more about this project, have any questions or just want to chat, feel free to hit me on [Ionic's worldwide slack](https://ionicworldwide.herokuapp.com/) or contact me through [my website](https://yannbraga.com/).
+
+Without further do, you can access the app on https://maythe4th.yannbraga.com, or on Ionic View with id XXXXXXXXXX, or even building the app yourself on the repository: https://github.com/yannbf/may-the-4th.
+
+Let's see which side will win! What side are you on?
+_spoiler: The one I chose offered me cookies_.
