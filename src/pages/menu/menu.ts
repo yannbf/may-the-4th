@@ -33,6 +33,7 @@ export class MenuPage {
   jediMode      = false;
   side          = 'light';
   onMobile      = false;
+  showContent   = false;
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
@@ -50,12 +51,12 @@ export class MenuPage {
     public motionCtrl: MotionProvider,
     public platform: Platform) {
     this.initialize();
+    setImmediate(this.showContent = true);
   }
 
   initialize() {
     this.initPages();
     this.onMobile =  navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone');
-    this.showSplash();
 
     this.storage.get('splashInfo').then(data => {
       if(data) {

@@ -5,7 +5,7 @@
     </div>
   </div>
 </div>
-<ion-split-pane>
+<ion-split-pane *ngIf="showContent">
   <ion-menu id="menu" [content]="content" type="shift">
     <ion-header no-border>
       <div class="sw-avatar">

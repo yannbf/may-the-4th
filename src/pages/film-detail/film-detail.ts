@@ -88,11 +88,6 @@ export class FilmDetailPage {
     private platform: Platform,
     private app: App) {
     this.film = navParams.data;
-
-    if(!this.film){
-      console.log('maladde')
-      this.app.getRootNav().setRoot('MenuPage');
-    }
   }
 
   onScrollEnd($event){
