@@ -62,7 +62,7 @@ export class MenuPage {
         var difference = now.getTime() - data.getTime();
         var minutesDifference = Math.round(difference / 60000);
 
-        if(minutesDifference >= 1) {
+        if(minutesDifference >= 3) {
           this.showSplash();
         }
       } else {
