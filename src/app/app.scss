@@ -20,10 +20,12 @@
 @import "../theme/fonts";
 
 ion-card {
+	cursor: -webkit-grab;
 	.card-header {
     	background: rgba(255,255,255,.05) !important;
 	}
     ion-avatar img {
+		max-height: 160px !important;
     	// max-width: 160px !important;
 		padding: 2px !important;
 	}
