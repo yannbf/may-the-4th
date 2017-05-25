@@ -202,7 +202,7 @@ I was really flattered to have won the challenge but I'm even more grateful to h
 
 I wish this was interesting and brought inspiration to you! If you are interested in knowing more about this project, have any questions or just want to chat, feel free to hit me on [Ionic's worldwide slack](https://ionicworldwide.herokuapp.com/) or contact me through [my website](https://yannbraga.com/).
 
-Without further do, you can access the app on https://maythe4th.yannbraga.com, or on Ionic View with id 6e8bd472, or even building the app yourself on the repository: https://github.com/yannbf/may-the-4th.
+Without further do, you can access the app on https://starwarnic.yannbraga.com, or on Ionic View with id 6e8bd472, or even building the app yourself on the repository: https://github.com/yannbf/may-the-4th.
 
 Let's see which side will win! What side are you on?
 _spoiler: The one I chose offered me cookies_.
