@@ -37,7 +37,9 @@ import { MovieInfoProvider } from '../providers/movie-info/movie-info';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      preloadModules: true
+    }),
     CacheModule.forRoot(),
     IonicStorageModule.forRoot(),
   ],
