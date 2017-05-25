@@ -6,7 +6,6 @@ import { IonicPage, MenuController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Storage } from '@ionic/storage';
 import { AlertService } from '../../providers/alert/alert';
-import { Device } from '@ionic-native/device';
 
 declare var google: any;
 
@@ -37,7 +36,6 @@ export class WorldMapPage {
     public geolocation: Geolocation,
     public firebaseData: FirebaseDataProvider,
     public alertCtrl: AlertService,
-    public device: Device,
     public storage: Storage,) {
       menu.swipeEnable(false, 'menu');
       this.loadGoogleMaps();
@@ -73,7 +71,7 @@ export class WorldMapPage {
         let user = {
           name: name,
           side: this.global.get('side'),
-          uuid: this.device.uuid,
+          uuid: this.global.get('uuid'),
           icon: (Math.floor(Math.random() * 6) + 1),
           position: {
             lat: position.coords.latitude,

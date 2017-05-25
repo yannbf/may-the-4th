@@ -13,7 +13,6 @@ import { Shake } from '@ionic-native/shake';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-import { Device } from '@ionic-native/device';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Flashlight } from '@ionic-native/flashlight';
 import { IonicStorageModule } from '@ionic/storage';
@@ -57,7 +56,6 @@ import { MovieInfoProvider } from '../providers/movie-info/movie-info';
     InAppBrowser,
     YoutubeVideoPlayer,
     FirebaseDataProvider,
-    Device,
     Flashlight,
     Geolocation,
     Network,

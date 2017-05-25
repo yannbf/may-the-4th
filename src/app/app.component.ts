@@ -1,5 +1,4 @@
 import { MenuShiftType } from '../pages/menu/shift-transition';
-import { Device } from '@ionic-native/device';
 import { AudioService } from '../providers/audio-service/audio-service';
 import { AppState } from './app.global';
 import { Component, ViewChild } from '@angular/core';
@@ -8,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Shake } from '@ionic-native/shake';
 import firebase from 'firebase';
+import Fingerprint2 from 'fingerprintjs2';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,8 +19,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, public global: AppState,
-    private shake: Shake, private audioCtrl: AudioService,
-    private device: Device) {
+    private shake: Shake, private audioCtrl: AudioService) {
     this.initializeApp();
     this.initializeFirebase();
   }
@@ -40,8 +39,10 @@ export class MyApp {
   initializeApp() {
     this.platform.ready().then(() => {
 
-      this.global.set('uuid', this.device.uuid);
       this.global.set('side', 'light');
+      new Fingerprint2().get((result, components) => {
+        this.global.set('uuid', result);
+      });
 
       MenuController.registerType('shift', MenuShiftType);
 

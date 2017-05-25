@@ -1,6 +1,5 @@
 import { MotionProvider } from '../../providers/motion/motion';
 import { AlertService } from '../../providers/alert/alert';
-import { Device } from '@ionic-native/device';
 import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
 import { AudioService } from '../../providers/audio-service/audio-service';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,7 +43,6 @@ export class MenuPage {
     public audioCtrl: AudioService,
     public flashlight: Flashlight,
     public firebaseData: FirebaseDataProvider,
-    public device: Device,
     public alertCtrl: AlertService,
     public storage: Storage,
     public geolocation: Geolocation,
