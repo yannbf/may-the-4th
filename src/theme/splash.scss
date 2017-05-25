@@ -1,0 +1,47 @@
+.fade {
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; display: none;}
+}
+
+#perspective
+{
+	// background-color: #000;
+	position: absolute;
+	width: 18em;
+	height: 70em;
+	bottom: 0;
+	left: 50%;
+	margin-left: -9em;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+}
+
+#perspective img {
+    width: 100vw;
+    display: block;
+    margin: 0 auto;
+}
+
+#perspective-content
+{
+	position: absolute;
+	top: 100%;
+	-webkit-animation: scroll 8s linear 1s infinite;
+	animation: scroll 8s linear 1s infinite;
+}
+
+/* animation */
+@-webkit-keyframes scroll {
+	0% { transform: translateY(0); }
+	100% { transform: translateY(-800px); }
+}
+
+@keyframes scroll {
+	0% { transform: translateY(0); }
+	100% { transform: translateY(-800px); }
+}

@@ -55,6 +55,7 @@ export class MenuPage {
   initialize() {
     this.initPages();
     this.onMobile =  navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone');
+    this.showSplash();
 
     this.storage.get('splashInfo').then(data => {
       if(data) {

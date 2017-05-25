@@ -18,6 +18,7 @@
 @import '../theme/lightside.theme';
 @import '../theme/mixins';
 @import "../theme/fonts";
+@import "../theme/splash";
 
 ion-card {
 	cursor: -webkit-grab;
@@ -29,54 +30,6 @@ ion-card {
     	// max-width: 160px !important;
 		padding: 2px !important;
 	}
-}
-
-.fade {
-  animation: fade 1s forwards;
-}
-
-@keyframes fade {
-  0%   { opacity: 1; }
-  100% { opacity: 0; display: none;}
-}
-
-#titles
-{
-	// background-color: #000;
-	position: absolute;
-	width: 18em;
-	height: 70em;
-	bottom: 0;
-	left: 50%;
-	margin-left: -9em;
-	overflow: hidden;
-	transform-origin: 50% 100%;
-	transform: perspective(300px) rotateX(25deg);
-}
-
-#titles img {
-    width: 100vw;
-    display: block;
-    margin: 0 auto;
-}
-
-#titlecontent
-{
-	position: absolute;
-	top: 100%;
-	-webkit-animation: scroll 20s linear 1s infinite;
-	animation: scroll 20s linear 1s infinite;
-}
-
-/* animation */
-@-webkit-keyframes scroll {
-	0% { top: 100%; }
-	100% { top: -170%; }
-}
-
-@keyframes scroll {
-	0% { top: 100%; }
-	100% { top: -170%; }
 }
 
 .darkside-button .button-inner{
