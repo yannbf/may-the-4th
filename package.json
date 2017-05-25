@@ -1,8 +1,8 @@
 {
-  "name": "MayThe4th",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "Star Warnic",
+  "version": "0.2.0",
+  "author": "Yann Braga",
+  "homepage": "https://yannbraga.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -48,5 +48,5 @@
     "@ionic/cli-plugin-ionic-angular": "^1.2.0",
     "typescript": "2.3.3"
   },
-  "description": "An Ionic project"
+  "description": "An Amazing Ionic project"
 }
