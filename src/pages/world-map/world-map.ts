@@ -115,10 +115,6 @@ export class WorldMapPage {
     }
   }
 
-  addRandomUser() {
-    this.firebaseData.addRandomUser();
-  }
-
   initMap() {
     this.mapInitialised = true;
 
