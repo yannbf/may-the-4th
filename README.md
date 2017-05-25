@@ -7,6 +7,7 @@ Of course I had to contribute, to see if I could *become a Jedi Hackster*.
 My name is Yann Braga, a passionate fullstack developer based in Fortaleza, Brazil. Today I'll be showing you how StarWarnic was developed.
 
 ## The Inspiration
+_important note: I do not own any rights on Star Wars brand of imagery, Star Wars was just a theme used for the challenge._
 
 To be honest, I’m not a huge Star Wars fan, but I’ve always had interest in knowing more about its movies. I started thinking in making a card game, where each player would get a set of seven cards and compete statuses with each other. Unfortunately my weekend was rushy, but I still wanted to be able to complete the challenge and make a fun app, so I had to change the initial idea to a very simple app: Listing Star Wars movies and showing some info about them.
 One thing I did that was fun (and might confuse people) is I listed the movies chronologically with their respective sequence number. This might be weird, as the movies were released in a completely non ordered sequence: IV, II, I, III, VI, V VII then VIII.
@@ -24,7 +25,7 @@ When I learned [my app had actually won](http://blog.ionic.io/and-the-1st-ionic-
 
 - [SWAPI (Star wars API)](https://swapi.co/)
 - [Ionic 3.2.1](https://github.com/driftyco/ionic)
-- [Firebase 3.9](://firebase.google.com/)
+- [Firebase 3.9](https://firebase.google.com/)
 - [Ionic Cache 2.0.1](https://github.com/Nodonisko/ionic-cache)
 - [Google Maps API v3](https://developers.google.com/maps/documentation/javascript/)
 - [Ionic Native plugins](https://ionicframework.com/docs/native/): Shake, Geolocation, Device, Flashlight, Native Audio, Network
