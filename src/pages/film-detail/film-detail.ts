@@ -30,6 +30,7 @@ export class FilmDetailPage {
   characters = [];
   triviaData = [];
   @ViewChild('view') view;
+  @ViewChild('movieCharacters') movieCharacters;
   @ViewChild(Content) content: Content;
 
   movieData  = [
@@ -108,6 +109,18 @@ export class FilmDetailPage {
       this.loadCharacters();
       this.loadFilmData();
     }
+  }
+
+  adjustCardSizes() {
+    var elements = document.getElementsByClassName('sw-character');
+
+    var elementHeights = Array.prototype.map.call(elements, (el) => {
+      return el.clientHeight;
+    });
+
+    var maxHeight = Math.max(...elementHeights)
+
+    Array.prototype.forEach.call(elements, (el) => el.style.height = `${maxHeight}px`);
   }
 
   loadFilmData() {

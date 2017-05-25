@@ -37,11 +37,11 @@
         </div>
       </div>
     </div>
-    <div class="characters" *ngIf="characters.length > 0" style="margin-bottom: 4rem">
+    <div class="characters" *ngIf="characters.length > 0">
       <h3 style="padding-left: 1rem; margin: 0">Characters in movie:</h3>
-      <ion-slides spaceBetween="2" autoplay="3000" slidesPerView="2" style="height: 60vh">
+      <ion-slides spaceBetween="2" autoplay="3000" slidesPerView="2" class="character-slides" (ionSlideAutoplayStart)="adjustCardSizes()">
         <ion-slide *ngFor="let character of characters" style="border-radius: 5px">
-          <ion-card *ngIf="character">
+          <ion-card *ngIf="character" class="sw-character">
             <ion-card-header>
               <h2 class="word-wrap secondary-font">{{ character.name }}</h2>
             </ion-card-header>
