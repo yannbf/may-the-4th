@@ -117,11 +117,15 @@ export class MenuPage {
 
   toggleJediMode(){
     if(this.jediMode){
-      if (this.platform.is('cordova')) this.flashlight.switchOn();
+      if (this.platform.is('cordova')) {
+        this.flashlight.switchOn();
+      }
       this.audioCtrl.play('turnLightSaberOn');
       this.motionCtrl.startWatchingSwings();
     } else {
-      if (this.platform.is('cordova')) this.flashlight.switchOff();
+      if (this.platform.is('cordova')) {
+        this.flashlight.switchOff();
+      }
       this.motionCtrl.stopWatchingSwings();
     }
   }

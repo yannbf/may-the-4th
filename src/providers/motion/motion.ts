@@ -20,18 +20,15 @@ export class MotionProvider {
       });
     } else {
       window.ondevicemotion = (event) => {
-        setImmediate(() => {
-        	var accelerationX = Math.abs(event.accelerationIncludingGravity.x);
-          let swing         = Math.abs(this.axisMovement - accelerationX);
+        var accelerationX = Math.abs(event.accelerationIncludingGravity.x);
+        let swing         = Math.abs(this.axisMovement - accelerationX);
 
-          if(swing >= 12){
-            alert(swing);
-            this.audioCtrl.swingLightSaber();
-            this.axisMovement = accelerationX;
-          } else {
-            this.axisMovement = accelerationX;
-          }
-        });
+        if(swing >= 10){
+          this.audioCtrl.swingLightSaber();
+          this.axisMovement = accelerationX;
+        } else {
+          this.axisMovement = accelerationX;
+        }
       }
     }
   }
