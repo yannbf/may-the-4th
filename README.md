@@ -162,6 +162,15 @@ On this video, I simulated many people registering at the same time for demonstr
 
 https://media.giphy.com/media/3ohzdWmi3voKoftIZ2/giphy.gif
 
+## Publishing as a PWA
+
+Fortunately, Ionic supports PWA right out of the box! It offers service workers and a manifest file by default. The service worker is a script that allows PWA functionality such as push notifications, background sync, offline support and much more. The manifest file is read by the browser and provides metadata such as name, theme and icon, and enables the browser to add the app to the home screen, so that the user can access it later on just like any installed app!
+
+Better yet, if you take a look at `index.html`, there's even a commented code that already does the work of registering the service worker for you. Everything was always there and we never noticed!
+
+But how to deploy a production version of my app as PWA? This is something that I have seen plenty of people asking about on the community and the answer is quite simple: just run `npm run ionic:build --prod` and deploy the generated `/www` folder!
+
+https://media0.giphy.com/media/11sBLVxNs7v6WA/giphy.gif
 
 ## May the force be with ALL of us
 
