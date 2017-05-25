@@ -8,19 +8,20 @@ import { Subject } from 'rxjs';
 export class FirebaseDataProvider {
 
   usersSubject = new Subject();
+  userRef = 'userInfo';
 
   constructor(public global: AppState) {  }
 
   writeUserData(user) {
-    return firebase.database().ref('ausers/' + user.uuid).set(user);
+    return firebase.database().ref(this.userRef + user.uuid).set(user);
   }
 
   setSide(side){
     let uuid = this.global.get('uuid');
-    var ref = firebase.database().ref('ausers/' + uuid);
+    var ref = firebase.database().ref(this.userRef + uuid);
     ref.once('value', (snapshot) => {
       if (snapshot.exists()) {
-        return firebase.database().ref('ausers/' + uuid + '/side').transaction( () =>{
+        return firebase.database().ref(this.userRef + uuid + '/side').transaction( () =>{
           return side;
         });
       }
@@ -28,21 +29,21 @@ export class FirebaseDataProvider {
   }
 
   fetchUsers() {
-    return firebase.database().ref('ausers').once('value', snapshot => {
+    return firebase.database().ref(this.userRef).once('value', snapshot => {
       return snapshot.val();
     });
   }
 
   watchForUpdates() {
     firebase.database()
-      .ref('ausers')
+      .ref(this.userRef)
       .on('child_added', dataSnapshot => {
         var user = dataSnapshot.val();
         this.usersSubject.next(user);
       });
 
     firebase.database()
-      .ref('ausers')
+      .ref(this.userRef)
       .on('child_changed', dataSnapshot => {
         var user = dataSnapshot.val();
         this.usersSubject.next(user);
@@ -64,6 +65,6 @@ export class FirebaseDataProvider {
       }
     }
 
-    return firebase.database().ref('ausers/' + user.uuid).set(user);
+    return firebase.database().ref(this.userRef + user.uuid).set(user);
   }
 }

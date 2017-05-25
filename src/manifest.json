@@ -8,6 +8,6 @@
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#212121",
-  "theme_color": "#212121"
+  "background_color": "#000",
+  "theme_color": "#000"
 }
