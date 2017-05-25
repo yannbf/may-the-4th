@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 export class FirebaseDataProvider {
 
   usersSubject = new Subject();
-  userRef = 'userInfo';
+  userRef = 'userInfo/';
 
   constructor(public global: AppState) {  }
 

@@ -1,11 +1,10 @@
 import { MenuShiftType } from '../pages/menu/shift-transition';
-import { AudioService } from '../providers/audio-service/audio-service';
 import { AppState } from './app.global';
 import { Component, ViewChild } from '@angular/core';
 import { MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Shake } from '@ionic-native/shake';
+import { Storage } from '@ionic/storage';
 import firebase from 'firebase';
 import Fingerprint2 from 'fingerprintjs2';
 
@@ -17,9 +16,11 @@ export class MyApp {
 
   rootPage: any = 'MenuPage';
 
-  constructor(public platform: Platform, public statusBar: StatusBar,
-    public splashScreen: SplashScreen, public global: AppState,
-    private shake: Shake, private audioCtrl: AudioService) {
+  constructor(public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public global: AppState,
+    public storage: Storage) {
     this.initializeApp();
     this.initializeFirebase();
   }
@@ -38,11 +39,17 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-
-      this.global.set('side', 'light');
-      new Fingerprint2().get((result, components) => {
-        this.global.set('uuid', result);
+      this.storage.get('uuid').then(uuid => {
+        if(uuid){
+          this.global.set('uuid', uuid);
+        } else {
+          new Fingerprint2().get((result, components) => {
+            this.global.set('uuid', result);
+            this.storage.set('uuid', result);
+          });
+        }
       });
+      this.global.set('side', 'light');
 
       MenuController.registerType('shift', MenuShiftType);
 
