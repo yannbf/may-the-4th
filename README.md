@@ -19,12 +19,12 @@ When I learned [my app had actually won](http://blog.ionic.io/and-the-1st-ionic-
 - Add a trivia section
 - Embed youtube videos in the app
 - Integrate the app with firebase and have a real time updated map!
-- Publish the app as PWA
+- Publish the app as PWA (Progressive web app)
 
 ## Technologies Used:
 
 - [SWAPI (Star wars API)](https://swapi.co/)
-- [Ionic 3.2.1](https://github.com/driftyco/ionic)
+- [Ionic 3.3.0](https://github.com/driftyco/ionic)
 - [Firebase 3.9](https://firebase.google.com/)
 - [Ionic Cache 2.0.1](https://github.com/Nodonisko/ionic-cache)
 - [Google Maps API v3](https://developers.google.com/maps/documentation/javascript/)
@@ -41,6 +41,7 @@ When I learned [my app had actually won](http://blog.ionic.io/and-the-1st-ionic-
 - Sound effects and Jedi Mode
 - Overlaying View with Trivia
 - Firebase and The Force map
+- Publish as PWA
 
 ## Animated(ish) Splash Icon
 
@@ -50,7 +51,7 @@ Basically, I set the app to not have a splashscreen. Then, added a `div` which c
 
 https://media.giphy.com/media/DDYYooPOfr5Cw/giphy.gif
 
-To be honest this experience gave me a few issues when in a PWA, as the splash is played every time the user updates the url and it gets a bit annoying. I had to make a few workarounds, and I recomment trying another approach.
+To be honest this experience gave me a few issues when in a PWA, as the splash is played every time the user updates the url and it gets a bit annoying. I had to make a few workarounds, so I recommend trying another approach.
 
 ## Custom icons
 
@@ -162,15 +163,38 @@ On this video, I simulated many people registering at the same time for demonstr
 
 https://media.giphy.com/media/3ohzdWmi3voKoftIZ2/giphy.gif
 
-## Publishing as a PWA
+## Publish as a PWA (Progressive Web App)
 
-Fortunately, Ionic supports PWA right out of the box! It offers service workers and a manifest file by default. The service worker is a script that allows PWA functionality such as push notifications, background sync, offline support and much more. The manifest file is read by the browser and provides metadata such as name, theme and icon, and enables the browser to add the app to the home screen, so that the user can access it later on just like any installed app!
+A Progressive Web App is a website that behaves just like a native app, and makes it much easier to users access your app without the need of going to the stores and installing your app. They could simply open a url and _boom_, it works.
 
-Better yet, if you take a look at `index.html`, there's even a commented code that already does the work of registering the service worker for you. Everything was always there and we never noticed!
+Fortunately, Ionic supports PWA right out of the box! It offers service workers and a manifest file by default. The service worker is a script that allows PWA functionality such as push notifications, background sync, offline support and much more. The manifest file is processed by the browser and provides metadata such as name, theme and icon, and enables the browser to add the app to the home screen, so that the user can access it later on just like any installed app!
 
-But how to deploy a production version of my app as PWA? This is something that I have seen plenty of people asking about on the community and the answer is quite simple: just run `npm run ionic:build --prod` and deploy the generated `/www` folder!
+Better yet, if you take a look at `index.html`, there's even a commented code that already does the work of registering the service worker for you: 
+
+```
+<!--script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+</script-->
+```
+
+Everything was always there and we never noticed! Just remove the comment and you're good to go. The project uses `sw-toolbox` by chrome, so in case you want to understand what you can do with it, [hit their website](https://googlechrome.github.io/sw-toolbox/).
+
+_Okay, sure.. but how to deploy a production version of my app as PWA?_ 
+
+This is something that I have seen plenty of people asking about on the community and the answer is quite simple: just run `npm run ionic:build --prod` and deploy the generated `/www` folder!
 
 https://media0.giphy.com/media/11sBLVxNs7v6WA/giphy.gif
+
+_Sure, but what are the steps of deploying a PWA?_
+Well, there are a few ways you can achieve it: you could either host your app in your private server or use Firebase hosting services. Firebase offers free hosting, which makes interesting if you are just trying stuff out. It's also really quick from setup to deploy, like a matter of a few minutes. There is a great [step by step guide](https://firebase.google.com/docs/hosting/deploying) on their website.
+
+*Important note!*
+
+Nowadays every website is being served over https protocol, so there's a great secure layer that protects the privacy and integrity of the website's data whilst securing the website from upcoming attacks. This means that every request in the app has to be done through *https*, otherwise it will be flagged as non-secure and therefore get canceled. SWAPI is great but gave me a few headaches because of that. As their docs doesn't mention https, I was unsure if they supported it. Even though I had renamed my request url to https (such as `https://swapi.co/api/people/1`), the calls were being redirected as http. After a few good hours the problem was solved in an unexpected way: I just had to add a slash to the end of every request ¯\_(ツ)_/¯.
 
 ## May the force be with ALL of us
 
