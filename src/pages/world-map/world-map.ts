@@ -39,7 +39,6 @@ export class WorldMapPage {
     public storage: Storage,) {
       menu.swipeEnable(false, 'menu');
       this.loadGoogleMaps();
-      setImmediate(this.requestUserInfo(),300);
   }
 
   isFirstAccess(){
@@ -139,12 +138,14 @@ export class WorldMapPage {
       this.map = new google.maps.Map(this.mapElement, mapOptions);
       this.loadMarkersData();
       this.watchForChanges();
+      setImmediate(this.requestUserInfo(),300);
     }, error => {
       mapOptions.center = new google.maps.LatLng(-31.563910, 147.154312);
       this.mapElement = document.getElementById('map');
       this.map = new google.maps.Map(this.mapElement, mapOptions);
       this.loadMarkersData();
       this.watchForChanges();
+      setImmediate(this.requestUserInfo(),300);
     });
   }
 
@@ -235,18 +236,25 @@ export class WorldMapPage {
   darkSideCount: any;
 
   loadMarkersData(){
-    this.firebaseData.fetchUsers().then(userData => {
-      userData = userData.val();
-      for (var prop in userData) {
-          if (userData.hasOwnProperty(prop)) {
-            this.users.push(userData[prop]);
-          }
-      }
+    // this.firebaseData.fetchUsers().then(userData => {
+    //   userData = userData.val();
+    //   for (var prop in userData) {
+    //       if (userData.hasOwnProperty(prop)) {
+    //         this.users.push(userData[prop]);
+    //       }
+    //   }
 
-      this.users.map((user) => {
-        this.saveMarker(user);
-      });
-    });
+    //   this.users.map((user) => {
+    //     this.saveMarker(user);
+    //   });
+    //   debugger;
+    // });
+  }
+
+  addUser(user) {
+    if(this.users.indexOf(user.uuid) === -1){
+      this.users.push(user);
+    }
   }
 
   updateCounters() {
