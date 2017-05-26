@@ -138,6 +138,7 @@ export class WorldMapPage {
       this.map = new google.maps.Map(this.mapElement, mapOptions);
       this.loadMarkersData();
       this.watchForChanges();
+      setImmediate(this.updateCounters(),300);
       setImmediate(this.requestUserInfo(),300);
     }, error => {
       mapOptions.center = new google.maps.LatLng(-31.563910, 147.154312);
@@ -145,6 +146,7 @@ export class WorldMapPage {
       this.map = new google.maps.Map(this.mapElement, mapOptions);
       this.loadMarkersData();
       this.watchForChanges();
+      setImmediate(this.updateCounters(),300);
       setImmediate(this.requestUserInfo(),300);
     });
   }
@@ -264,11 +266,13 @@ export class WorldMapPage {
 
   centerToMyLocation() {
     if (this.myLocation) {
-      this.map.setCenter(this.myLocation);
+      this.map.setZoom(13);
+      this.map.panTo(this.myLocation);
     } else {
       this.geolocation.getCurrentPosition().then((position) => {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this.myLocation = latLng;
+        this.map.setZoom(13);
         this.map.panTo(latLng);
       }).catch(error => {
         console.log('location error', error);
