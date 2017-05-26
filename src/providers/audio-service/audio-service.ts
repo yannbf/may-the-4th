@@ -12,17 +12,21 @@ export class AudioService {
 
   constructor(private nativeAudio: NativeAudio,
     private platform: Platform) {
-    this.preloadDefaultAudios();
+
+    this.platform.ready().then( () => {
+      this.preloadDefaultAudios();
+    });
   }
 
   preloadDefaultAudios() {
     this.preloadedAudios = new Map();
     this.preload('turnLightSaberOn', 'assets/audio/lightsaber-on.mp3');
-    this.preload('lightSwing'      , 'assets/audio/light_swing.wav');
+    this.preload('lightSwing'      , 'assets/audio/light_swing.mp3');
     this.preload('lightSwing2'     , 'assets/audio/light_swing_2.mp3');
     this.preload('heavySwing'      , 'assets/audio/heavy_swing.mp3');
     this.preload('heavySwing2'     , 'assets/audio/heavy_swing_2.mp3');
-    this.preload('intro'           , 'assets/audio/intro.wav');
+    this.preload('jediOn'          , 'assets/audio/jedi_on.mp3');
+    this.preload('jediOff'         , 'assets/audio/jedi_off.mp3');
   }
 
   preload(key, path) {
@@ -39,6 +43,21 @@ export class AudioService {
     } else {
       let audioPath = this.preloadedAudios.get(key);
       let audio = new Audio(audioPath);
+      audio.load();
+      audio.play();
+    }
+  }
+
+  playIntro() {
+    let path = 'assets/audio/intro.mp3';
+    if(this.platform.is('cordova')){
+      this.nativeAudio.preloadSimple('intro' , path).then(()=>{
+        this.nativeAudio.play('intro');
+      }).catch(error => {
+        alert(JSON.stringify(error));
+      });
+    } else {
+      let audio = new Audio(path);
       audio.load();
       audio.play();
     }

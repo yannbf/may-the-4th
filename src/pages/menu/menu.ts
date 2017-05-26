@@ -32,7 +32,6 @@ export class MenuPage {
   side          = 'light';
   onMobile      = false;
   showContent   = true;
-  moveSubscription : any;
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
@@ -72,9 +71,12 @@ export class MenuPage {
   }
 
   showSplash() {
+    this.platform.ready().then(() => {
+      this.audioCtrl.playIntro();
+    });
+
     this.splash = true;
     this.showContent = false;
-    this.audioCtrl.play('intro');
     setTimeout(() => this.showContent = true, 3000);
     setTimeout(() => this.fade = true, 7000);
     setTimeout(() => this.splash = false, 7800);
@@ -121,15 +123,14 @@ export class MenuPage {
       if (this.platform.is('cordova')) {
         this.flashlight.switchOn();
       }
-      this.moveSubscription = this.motionCtrl.startWatchingSwings().subscribe( () => {
-        this.audioCtrl.swingLightSaber();
-      });
+      this.audioCtrl.play('jediOn');
+      this.motionCtrl.startWatchingSwings();
     } else {
       if (this.platform.is('cordova')) {
         this.flashlight.switchOff();
       }
+      this.audioCtrl.play('jediOff');
       this.motionCtrl.stopWatchingSwings();
-      this.moveSubscription.unsubscribe();
     }
   }
 

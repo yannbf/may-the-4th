@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="braga.starwarnic" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.yannbraga.starwarnic" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Star Warnic</name>
-    <description>Cool info about star wars :D</description>
+    <description>Cool app about star wars :D</description>
     <author email="contact@yannbraga.com" href="http://yannbraga.com/">Yann Braga</author>
     <content src="index.html"/>
     <access origin="*"/>
