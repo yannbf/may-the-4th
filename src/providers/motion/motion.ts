@@ -16,33 +16,28 @@ export class MotionProvider {
   }
 
   startWatchingSwings() {
-    if(this.platform.is('cordova')) {
+    if (this.platform.is('cordova')) {
       this.watchEvent = this.shake.startWatch(10).subscribe(() => {
-        this.movementSubject.next(true);
+        this.audioCtrl.swingLightSaber();
       });
     } else {
       window.ondevicemotion = (event) => {
         var accelerationX = Math.abs(event.accelerationIncludingGravity.x);
-        let swing         = Math.abs(this.axisMovement - accelerationX);
+        let swing = Math.abs(this.axisMovement - accelerationX);
 
-        if(swing >= 10){
-          this.movementSubject.next(true);
+        if (swing >= 10) {
+          this.audioCtrl.swingLightSaber();
           this.axisMovement = accelerationX;
         } else {
           this.axisMovement = accelerationX;
         }
       }
     }
-
-    return this.movementSubject;
   }
 
   stopWatchingSwings() {
-
-    this.movementSubject.complete();
-
-    if(this.platform.is('cordova')) {
-      if(this.watchEvent) {
+    if (this.platform.is('cordova')) {
+      if (this.watchEvent) {
         this.watchEvent.unsubscribe();
       }
     } else {
