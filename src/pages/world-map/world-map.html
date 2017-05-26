@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>World map</ion-title>
+    <ion-title>Force map</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)='centerToMyLocation()'>
         <ion-icon name="ios-locate-outline"></ion-icon>
@@ -21,12 +21,9 @@
     <div id="lightsaber-container">
       <span [style.width.%]="(lightSideCount/users.length) * 100" class="lightsaber dark"></span>
       <span [style.width.%]="(darkSideCount/users.length) * 100" class="lightsaber light"></span>
-    </div>
-    <div class="info" style="text-align: center">
-      <span class="float-left">Dark: {{ darkSideCount }}</span>
-      <span class="float-right">Light: {{ lightSideCount }}</span>
-      <!--<button ion-button (click)="addRandomUser()">
-        addRandomUser
-      </button>-->
+      <div class="info" style="text-align: center">
+        <span class="float-left">Dark: {{ darkSideCount }}</span>
+        <span class="float-right">Light: {{ lightSideCount }}</span>
+      </div>
     </div>
 </ion-content>

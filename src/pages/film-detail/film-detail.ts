@@ -70,7 +70,7 @@ export class FilmDetailPage {
   ]
 
    viewOptions = {
-        title: 'Trivia',
+        title: 'Did you know?',
         handleHeight: 50,
         thresholdFromBottom: 200,
         thresholdFromTop: 200,
