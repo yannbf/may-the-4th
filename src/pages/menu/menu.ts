@@ -32,7 +32,7 @@ export class MenuPage {
   jediMode      = false;
   side          = 'light';
   onMobile      = false;
-  showContent   = false;
+  showContent   = true;
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
@@ -49,7 +49,6 @@ export class MenuPage {
     public motionCtrl: MotionProvider,
     public platform: Platform) {
     this.initialize();
-    setImmediate(this.showContent = true);
   }
 
   initialize() {
@@ -73,6 +72,9 @@ export class MenuPage {
 
   showSplash() {
     this.splash = true;
+    this.showContent = false;
+    this.audioCtrl.play('intro');
+    setTimeout(() => this.showContent = true, 3000);
     setTimeout(() => this.fade = true, 7000);
     setTimeout(() => this.splash = false, 7800);
     this.storage.set('splashInfo', new Date());

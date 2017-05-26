@@ -10,7 +10,8 @@ export class AudioService {
   preloadedAudios: Map<string, string>;
   lightSaberSwings = ['lightSwing', 'lightSwing2', 'heavySwing', 'heavySwing2'];
 
-  constructor( private nativeAudio: NativeAudio, private platform: Platform) {
+  constructor(private nativeAudio: NativeAudio,
+    private platform: Platform) {
     this.preloadDefaultAudios();
   }
 
@@ -21,6 +22,7 @@ export class AudioService {
     this.preload('lightSwing2'     , 'assets/audio/light_swing_2.mp3');
     this.preload('heavySwing'      , 'assets/audio/heavy_swing.mp3');
     this.preload('heavySwing2'     , 'assets/audio/heavy_swing_2.mp3');
+    this.preload('intro'           , 'assets/audio/intro.mp3');
   }
 
   preload(key, path) {
