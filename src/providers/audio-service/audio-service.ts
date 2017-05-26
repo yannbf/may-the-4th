@@ -18,11 +18,11 @@ export class AudioService {
   preloadDefaultAudios() {
     this.preloadedAudios = new Map();
     this.preload('turnLightSaberOn', 'assets/audio/lightsaber-on.mp3');
-    this.preload('lightSwing'      , 'assets/audio/light_swing.mp3');
+    this.preload('lightSwing'      , 'assets/audio/light_swing.wav');
     this.preload('lightSwing2'     , 'assets/audio/light_swing_2.mp3');
     this.preload('heavySwing'      , 'assets/audio/heavy_swing.mp3');
     this.preload('heavySwing2'     , 'assets/audio/heavy_swing_2.mp3');
-    this.preload('intro'           , 'assets/audio/intro.mp3');
+    this.preload('intro'           , 'assets/audio/intro.wav');
   }
 
   preload(key, path) {

@@ -33,6 +33,7 @@ export class MenuPage {
   side          = 'light';
   onMobile      = false;
   showContent   = true;
+  moveSubscription : any;
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
 
@@ -120,13 +121,15 @@ export class MenuPage {
       if (this.platform.is('cordova')) {
         this.flashlight.switchOn();
       }
-      this.audioCtrl.play('turnLightSaberOn');
-      this.motionCtrl.startWatchingSwings();
+      this.moveSubscription = this.motionCtrl.startWatchingSwings().subscribe( () => {
+        this.audioCtrl.swingLightSaber();
+      });
     } else {
       if (this.platform.is('cordova')) {
         this.flashlight.switchOff();
       }
       this.motionCtrl.stopWatchingSwings();
+      this.moveSubscription.unsubscribe();
     }
   }
 
