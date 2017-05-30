@@ -7,23 +7,22 @@
 </div>
 <ion-split-pane [hidden]="!showContent">
   <ion-menu id="menu" [content]="content" type="shift">
-    <ion-header no-border>
-      <div class="sw-avatar">
-        <div #darkSide *ngIf="global.state['side'] === 'dark'">
-          <div class="hexagon">
-            <div class="hexTop"></div>
-            <div class="hexBottom"></div>
+    <ion-content>
+      <div #menuHeader>
+        <div class="sw-avatar">
+          <div #darkSide *ngIf="global.state['side'] === 'dark'">
+            <div class="hexagon">
+              <div class="hexTop"></div>
+              <div class="hexBottom"></div>
+            </div>
+          </div>
+          <div #lightSide *ngIf="global.state['side'] === 'light'">
+            <ion-avatar>
+              <img class="user-avatar round" src="assets/img/avatar/luke.jpg"/>
+            </ion-avatar>
           </div>
         </div>
-        <div #lightSide *ngIf="global.state['side'] === 'light'">
-          <ion-avatar>
-            <img class="user-avatar round" src="assets/img/avatar/luke.jpg"/>
-          </ion-avatar>
-        </div>
       </div>
-    </ion-header>
-
-    <ion-content>
       <ion-list no-lines>
         <button *ngFor="let p of pages"
                 menuClose ion-item
