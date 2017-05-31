@@ -105,11 +105,13 @@ export class WorldMapPage {
           this.enableMap();
         }
 
-        let script = document.createElement("script");
-        script.id = "googleMaps";
-        script.src = `${this.mapsUrl}js?v=3&key=${this.apiKey}&callback=mapInit`;
+        if(!document.body.children['googleMaps']){
+          let script = document.createElement("script");
+          script.id = "googleMaps";
+          script.src = `${this.mapsUrl}js?v=3&key=${this.apiKey}&callback=mapInit`;
 
-        document.body.appendChild(script);
+          document.body.appendChild(script);
+        }
       }
     }
     else {
@@ -146,14 +148,12 @@ export class WorldMapPage {
       this.mapElement = document.getElementById('map');
       this.map = new google.maps.Map(this.mapElement, mapOptions);
       this.watchForChanges();
-      setImmediate(this.updateCounters(),300);
       setImmediate(this.requestUserInfo(),300);
     }, error => {
       mapOptions.center = new google.maps.LatLng(-31.563910, 147.154312);
       this.mapElement = document.getElementById('map');
       this.map = new google.maps.Map(this.mapElement, mapOptions);
       this.watchForChanges();
-      setImmediate(this.updateCounters(),300);
       setImmediate(this.requestUserInfo(),300);
     });
   }
