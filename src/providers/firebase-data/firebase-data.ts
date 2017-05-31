@@ -1,3 +1,4 @@
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AppState } from '../../app/app.global';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -10,7 +11,8 @@ export class FirebaseDataProvider {
   usersSubject = new Subject();
   userRef = 'userInfo/';
 
-  constructor(public global: AppState) {  }
+  constructor(public global: AppState,
+    public afDatabase: AngularFireDatabase) {  }
 
   writeUserData(user) {
     return firebase.database().ref(this.userRef + user.uuid).set(user);
@@ -35,15 +37,13 @@ export class FirebaseDataProvider {
   }
 
   watchForUpdates() {
-    firebase.database()
-      .ref(this.userRef)
+    this.afDatabase.database.ref(this.userRef)
       .on('child_added', dataSnapshot => {
         var user = dataSnapshot.val();
         this.usersSubject.next(user);
       });
 
-    firebase.database()
-      .ref(this.userRef)
+    this.afDatabase.database.ref(this.userRef)
       .on('child_changed', dataSnapshot => {
         var user = dataSnapshot.val();
         this.usersSubject.next(user);

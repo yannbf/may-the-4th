@@ -29,6 +29,19 @@ import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network';
 import { MovieInfoProvider } from '../providers/movie-info/movie-info';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAK2DSpw4LHsYS6tPzgfHmZnVM32uQaQn4",
+  authDomain: "star-warnic.firebaseapp.com",
+  databaseURL: "https://star-warnic.firebaseio.com",
+  projectId: "star-warnic",
+  storageBucket: "star-warnic.appspot.com",
+  messagingSenderId: "459136741480"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,6 +54,9 @@ import { MovieInfoProvider } from '../providers/movie-info/movie-info';
     }),
     CacheModule.forRoot(),
     IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
