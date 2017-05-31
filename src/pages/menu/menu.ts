@@ -1,15 +1,14 @@
+import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
+import { IonicPage, Menu, Nav, NavController, Platform } from 'ionic-angular';
+import { AudioService } from '../../providers/audio-service/audio-service';
 import { MotionProvider } from '../../providers/motion/motion';
 import { AlertService } from '../../providers/alert/alert';
-import { FirebaseDataProvider } from '../../providers/firebase-data/firebase-data';
-import { AudioService } from '../../providers/audio-service/audio-service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
-import { AppState } from '../../app/app.global';
-import { IonicPage, Menu, Nav, NavController, Platform } from 'ionic-angular';
-import { Component, ViewChild } from '@angular/core';
 import { Flashlight } from '@ionic-native/flashlight';
+import { Component, ViewChild } from '@angular/core';
+import { AppState } from '../../app/app.global';
 import { Storage } from '@ionic/storage';
-
 import { Subject } from 'rxjs';
 
 @IonicPage({
@@ -54,7 +53,8 @@ export class MenuPage {
 
   initialize() {
     this.initPages();
-    this.onMobile =  navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone');
+    this.onMobile = this.platform.is('cordova');
+    // this.onMobile =  navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone');
 
     this.storage.get('splashInfo').then(data => {
       if(data) {

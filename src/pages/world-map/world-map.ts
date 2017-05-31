@@ -26,6 +26,9 @@ export class WorldMapPage {
   mapsUrl = 'https://maps.google.com/maps/api/';
   apiKey: string = "AIzaSyDDBFb61Xgfw8RG28BHFB6lMm4D3de-A1U";
   myLocation: any;
+  users = [];
+  lightSideCount: any;
+  darkSideCount: any;
 
   constructor(public navParams: NavParams,
     public renderer: Renderer,
@@ -39,6 +42,12 @@ export class WorldMapPage {
     public storage: Storage,) {
       menu.swipeEnable(false, 'menu');
       this.loadGoogleMaps();
+  }
+
+  ionViewDidLoad() {
+    this.markers = new Map();
+    this.users = [];
+    this.loadGoogleMaps();
   }
 
   isFirstAccess(){
@@ -136,7 +145,6 @@ export class WorldMapPage {
       mapOptions.center = latLng;
       this.mapElement = document.getElementById('map');
       this.map = new google.maps.Map(this.mapElement, mapOptions);
-      this.loadMarkersData();
       this.watchForChanges();
       setImmediate(this.updateCounters(),300);
       setImmediate(this.requestUserInfo(),300);
@@ -144,7 +152,6 @@ export class WorldMapPage {
       mapOptions.center = new google.maps.LatLng(-31.563910, 147.154312);
       this.mapElement = document.getElementById('map');
       this.map = new google.maps.Map(this.mapElement, mapOptions);
-      this.loadMarkersData();
       this.watchForChanges();
       setImmediate(this.updateCounters(),300);
       setImmediate(this.requestUserInfo(),300);
@@ -233,26 +240,6 @@ export class WorldMapPage {
     });
   }
 
-  users = [];
-  lightSideCount: any;
-  darkSideCount: any;
-
-  loadMarkersData(){
-    // this.firebaseData.fetchUsers().then(userData => {
-    //   userData = userData.val();
-    //   for (var prop in userData) {
-    //       if (userData.hasOwnProperty(prop)) {
-    //         this.users.push(userData[prop]);
-    //       }
-    //   }
-
-    //   this.users.map((user) => {
-    //     this.saveMarker(user);
-    //   });
-    //   debugger;
-    // });
-  }
-
   addUser(user) {
     if(this.users.indexOf(user.uuid) === -1){
       this.users.push(user);
@@ -275,7 +262,7 @@ export class WorldMapPage {
         this.map.setZoom(13);
         this.map.panTo(latLng);
       }).catch(error => {
-        console.log('location error', error);
+        console.log('geolocation error', error);
       });
     }
   }
